@@ -1,15 +1,26 @@
 {
-	"name": "pingpong-modules/izadmin",
-	"description": "",
+	"name": "laravel-pingpong-modules/izadmin",
+	"vendor":"laravel-pingpong-modules",
+	"type": "magento-library",
+	"description": "Admin page for IzModules Laravel",
 	"authors": [
 		{
-			"name": "Pingpong Labs",
-			"email": "pingpong.labs@gmail.com"
+			"name": "Khoi Le",
+			"email": "mr.vjcspy@gmail.com"
 		}
 	],
+	"require": {
+		"php": ">=5.5.9"
+	},
 	"autoload": {
 		"psr-4": {
 			"Modules\\IzAdmin\\": ""
+		}
+	},
+	"extra": {
+		"installer-name": "IzAdmin",
+		"installer-paths": {
+			"modules/{$name}/": ["type:magento-library"]
 		}
 	}
 }
