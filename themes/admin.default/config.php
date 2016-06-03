@@ -14,7 +14,7 @@ return [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-material/angular-material.min.js'],
-                    'style'   => ['bower_components/angular-material/angular-material.min.css']
+                    'styles'   => ['bower_components/angular-material/angular-material.min.css']
                 ],
             'dependency' => ['angular', 'bootstrap']
         ],
