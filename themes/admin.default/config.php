@@ -1,6 +1,52 @@
 <?php
 
-return array(
+return [
+
+    'assets' => [
+        'angular'           => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular/angular.min.js'],
+                ],
+            'dependency' => ['jquery']
+        ],
+        'angular-material'  => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-material/angular-material.min.js'],
+                    'style'   => ['bower_components/angular-material/angular-material.min.css']
+                ],
+            'dependency' => ['angular', 'bootstrap']
+        ],
+        'angular-messages'  => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-messages/angular-messages.min.js'],
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-aria'      => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-aria/angular-aria.min.js'],
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-ui-router' => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-ui-router/release/angular-ui-router.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-animate'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-animate/angular-animate.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -28,13 +74,12 @@ return array(
     |
     */
 
-    'events' => array(
+    'events' => [
 
         // Before event inherit from package config and the theme that call before,
         // you can use this event to set meta, breadcrumb template or anything
         // you want inheriting.
-        'before' => function($theme)
-        {
+        'before'             => function ($theme) {
             // You can remove this line anytime.
             $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
 
@@ -55,8 +100,7 @@ return array(
         // Listen on event before render a theme,
         // this event should call to assign some assets,
         // breadcrumb template.
-        'beforeRenderTheme' => function($theme)
-        {
+        'beforeRenderTheme'  => function ($theme) {
             // You may use this event to set up your assets.
             // $theme->asset()->usePath()->add('core', 'core.js');
             // $theme->asset()->add('jquery', 'vendor/jquery/jquery.min.js');
@@ -71,15 +115,14 @@ return array(
 
         // Listen on event before render a layout,
         // this should call to assign style, script for a layout.
-        'beforeRenderLayout' => array(
+        'beforeRenderLayout' => [
 
-            'default' => function($theme)
-            {
+            'default' => function ($theme) {
                 // $theme->asset()->usePath()->add('ipad', 'css/layouts/ipad.css');
             }
 
-        )
+        ]
 
-    )
+    ]
 
-);
+];
