@@ -131,10 +131,25 @@ return [
         // this event should call to assign some assets,
         // breadcrumb template.
         'beforeRenderTheme'  => function ($theme) {
-            // You may use this event to set up your assets.
-            // $theme->asset()->usePath()->add('core', 'core.js');
-            // $theme->asset()->add('jquery', 'vendor/jquery/jquery.min.js');
-            // $theme->asset()->add('jquery-ui', 'vendor/jqueryui/jquery-ui.min.js', array('jquery'));
+           
+            app('izAsset')->addAssets(
+                [
+                    'angular-material',
+                    'angular',
+                    'bootstrap',
+                    'jquery',
+                    'angular-aria',
+                    'angular-messages',
+                    'angular-animate',
+                    'angular-ui-router',
+                    'oclazyload',
+                    'angular-sanitize',
+                    'angular-toastr',
+                    'angular-loading-bar',
+                    'lodash',
+                    'components-font-awesome'
+                ]
+            );
 
             // Partial composer.
             // $theme->partialComposer('header', function($view)
