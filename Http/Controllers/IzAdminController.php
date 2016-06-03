@@ -21,6 +21,8 @@ class IzAdminController extends ThemeAbstractController {
                 'angular-sanitize',
                 'angular-toastr',
                 'angular-loading-bar',
+                'lodash',
+                'components-font-awesome'
             ]);
 
         $this->setViewData(
