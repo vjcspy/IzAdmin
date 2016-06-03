@@ -7,23 +7,7 @@ class IzAdminController extends ThemeAbstractController {
     public function getTest() {
         $this->setTheme('admin.default')->setLayout('default');
 
-        $this->addAssets(
-            [
-                'angular-material',
-                'angular',
-                'bootstrap',
-                'jquery',
-                'angular-aria',
-                'angular-messages',
-                'angular-animate',
-                'angular-ui-router',
-                'oclazyload',
-                'angular-sanitize',
-                'angular-toastr',
-                'angular-loading-bar',
-                'lodash',
-                'components-font-awesome'
-            ])
+        $this
              ->addCustomAssets(
                  [
                      'app-css'               =>
