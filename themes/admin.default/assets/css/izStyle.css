@@ -1,0 +1,15 @@
+.itemInstore {
+    background-color: #0277bd;
+}
+
+.div200px {
+    width: 200px;
+}
+
+.selected, .selected td {
+    background-color: #265a88 !important;
+}
+
+.dataTables_filter {
+    display: none !important;
+}

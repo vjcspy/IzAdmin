@@ -23,7 +23,35 @@ class IzAdminController extends ThemeAbstractController {
                 'angular-loading-bar',
                 'lodash',
                 'components-font-awesome'
-            ]);
+            ])
+             ->addCustomAssets(
+                 [
+                     'app-css'               =>
+                         [
+                             'source'     => 'css/app.css',
+                             'dependency' => [],
+                             'theme_name' => 'admin.default'
+                         ],
+                     'font-css'              =>
+                         [
+                             'source'     => 'css/font.css',
+                             'dependency' => [],
+                             'theme_name' => 'admin.default'
+                         ],
+                     'izStyle-css'           =>
+                         [
+                             'source'     => 'css/izStyle.css',
+                             'dependency' => [],
+                             'theme_name' => 'admin.default'
+                         ],
+                     'material-design-icons' =>
+                         [
+                             'source'     => 'css/material-design-icons.css',
+                             'dependency' => [],
+                             'theme_name' => 'admin.default'
+                         ],
+                 ]
+             );
 
         $this->setViewData(
             [
