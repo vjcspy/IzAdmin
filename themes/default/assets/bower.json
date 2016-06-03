@@ -1,0 +1,17 @@
+{
+  "name": "IzAdmin",
+  "homepage": "https://github.com/vjcspy/IzAdmin",
+  "authors": [
+    "vjcspy <mr.vjcspy@gmail.com>"
+  ],
+  "description": "Script and Style of IzAdmin Module",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
