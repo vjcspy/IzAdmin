@@ -46,6 +46,36 @@ return [
                 ],
             'dependency' => ['angular']
         ],
+        'oclazyload'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/oclazyload/dist/ocLazyLoad.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-sanitize'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-sanitize/angular-sanitize.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-loading-bar'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
+                    'styles'   => ['bower_components/angular-loading-bar/build/loading-bar.min.css']
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-toastr'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-toastr/dist/angular-toastr.min.js'],
+                    'styles'   => ['bower_components/angular-toastr/dist/angular-toastr.min.css']
+                ],
+            'dependency' => ['angular']
+        ],
     ],
 
     /*

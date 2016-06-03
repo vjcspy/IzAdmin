@@ -16,7 +16,11 @@ class IzAdminController extends ThemeAbstractController {
                 'angular-aria',
                 'angular-messages',
                 'angular-animate',
-                'angular-ui-router'
+                'angular-ui-router',
+                'oclazyload',
+                'angular-sanitize',
+                'angular-toastr',
+                'angular-loading-bar',
             ]);
 
         $this->setViewData(
@@ -27,7 +31,8 @@ class IzAdminController extends ThemeAbstractController {
 
         $this->setThemeData(
             [
-                'title' => 'Admin Title Test'
+                'description' => 'IzAdmin Description',
+                'keywords'    => 'IzAdmin Keyword'
             ]
         );
 
