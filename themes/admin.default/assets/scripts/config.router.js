@@ -20,8 +20,12 @@ angular.module('app')
         ['$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG',
             function ($stateProvider, $urlRouterProvider, MODULE_CONFIG) {
                 $urlRouterProvider
-                    .otherwise('/app/analysis');
+                    .otherwise('/test');
                 $stateProvider
+                    .state('test',{
+                        url:'/test',
+                        templateUrl: 'views/layout.html'
+                    })
                     .state('app', {
                         abstract: true,
                         url: '/app',

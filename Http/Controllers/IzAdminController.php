@@ -58,31 +58,6 @@ class IzAdminController extends ThemeAbstractController {
                         'theme_name' => 'admin.default'
                     ],
                 /*JS*/
-                'app'                   => [
-                    'source'     => 'scripts/app.js',
-                    'dependency' => [],
-                    'theme_name' => 'admin.default'
-                ],
-                'config'                => [
-                    'source'     => 'scripts/config.js',
-                    'dependency' => ['app'],
-                    'theme_name' => 'admin.default'
-                ],
-                'config.lazyload'       => [
-                    'source'     => 'scripts/config.lazyload.js',
-                    'dependency' => ['config'],
-                    'theme_name' => 'admin.default'
-                ],
-                'config.router'         => [
-                    'source'     => 'scripts/config.router.js',
-                    'dependency' => ['config'],
-                    'theme_name' => 'admin.default'
-                ],
-                'app.ctrl'              => [
-                    'source'     => 'scripts/app.ctrl.js',
-                    'dependency' => ['app'],
-                    'theme_name' => 'admin.default'
-                ],
                 'ui.load'              => [
                     'source'     => 'scripts/services/ui-load.js',
                     'dependency' => ['app'],
@@ -109,7 +84,6 @@ class IzAdminController extends ThemeAbstractController {
             ]
         );
 
-        // will render view: 'layout/router/current_function.blade.php';
         return $this->renderHtml();
     }
 
