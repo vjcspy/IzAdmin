@@ -3,76 +3,76 @@
 return [
 
     'assets' => [
-        'angular'           => [
+        'angular'             => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular/angular.min.js'],
                 ],
             'dependency' => ['jquery']
         ],
-        'angular-material'  => [
+        'angular-material'    => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-material/angular-material.min.js'],
-                    'styles'   => ['bower_components/angular-material/angular-material.min.css']
+                    'styles'  => ['bower_components/angular-material/angular-material.min.css']
                 ],
             'dependency' => ['angular', 'bootstrap']
         ],
-        'angular-messages'  => [
+        'angular-messages'    => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-messages/angular-messages.min.js'],
                 ],
             'dependency' => ['angular']
         ],
-        'angular-aria'      => [
+        'angular-aria'        => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-aria/angular-aria.min.js'],
                 ],
             'dependency' => ['angular']
         ],
-        'angular-ui-router' => [
+        'angular-ui-router'   => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-ui-router/release/angular-ui-router.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'angular-animate'   => [
+        'angular-animate'     => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-animate/angular-animate.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'oclazyload'   => [
+        'oclazyload'          => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/oclazyload/dist/ocLazyLoad.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'angular-sanitize'   => [
+        'angular-sanitize'    => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-sanitize/angular-sanitize.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'angular-loading-bar'   => [
+        'angular-loading-bar' => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
-                    'styles'   => ['bower_components/angular-loading-bar/build/loading-bar.min.css']
+                    'styles'  => ['bower_components/angular-loading-bar/build/loading-bar.min.css']
                 ],
             'dependency' => ['angular']
         ],
-        'angular-toastr'   => [
+        'angular-toastr'      => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-toastr/dist/angular-toastr.min.js'],
-                    'styles'   => ['bower_components/angular-toastr/dist/angular-toastr.min.css']
+                    'styles'  => ['bower_components/angular-toastr/dist/angular-toastr.min.css']
                 ],
             'dependency' => ['angular']
         ],
@@ -81,29 +81,36 @@ return [
                 [
                     'scripts' => ['bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js']
                 ],
-            'dependency' => ['angular','bootstrap']
+            'dependency' => ['angular', 'bootstrap']
         ],
-        'angular-cookies'   => [
+        'angular-cookies'     => [
             'sources'    =>
                 [
-                    'scripts' => ['bower_components/angular-bootstrap/angular-cookies.min.js']
+                    'scripts' => ['bower_components/angular-cookies/angular-cookies.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'angular-translate'=>[
+        'angular-translate'   => [
             'sources'    =>
                 [
                     'scripts' => ['bower_components/angular-translate/angular-translate.min.js']
                 ],
             'dependency' => ['angular']
         ],
-        'ngstorage'=>[
+        'ngstorage'           => [
             'sources'    =>
                 [
-                    'scripts' => ['bower_components/ngstorage/ngStorage.min.min.js']
+                    'scripts' => ['bower_components/ngstorage/ngStorage.min.js']
                 ],
             'dependency' => ['angular']
-        ]
+        ],
+        'ui.utils'            => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/ngstorage/ngStorage.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
     ],
 
     /*

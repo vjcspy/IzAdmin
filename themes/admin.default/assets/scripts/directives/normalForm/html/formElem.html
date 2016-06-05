@@ -1,0 +1,53 @@
+<!--Template in directive normalForm-->
+
+<label class="col-xs-3 col-sm-3 col-md-3 col-lg- control-label">{{elemTitle}}</label>
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <input ng-if="elemType == 'text'" type="text" class="form-control" placeholder="{{elemPlaceholder}}"
+           ng-model="elemModel[elemId]" ng-disabled="elemEditable== 'false'"
+           required>
+    <textarea ng-if="elemType == 'textarea'" class="form-control" rows="5" ng-model="elemModel[elemId]"
+              ng-disabled="elemEditable== 'false'"
+              required></textarea>
+    <select ng-if="elemType == 'select'" class="form-control"
+            ng-model="elemModel[elemId]" required ng-disabled="elemEditable== 'false'">
+        <option ng-selected="elemModel[elemParentbranch][elemKey]==option.id" ng-repeat="option in elemOptionData"
+                value="{{option.id}}">{{option.name}}
+        </option>
+    </select>
+    <div ng-if="elemType == 'editor'" text-angular ng-model="elemModel[elemId]" class="btn-groups"></div>
+    <div ng-if="elemType == 'fileUpload'"
+         flow-init
+         flow-file-success="uploadImageSuccess( $file, $message, $flow )"
+         flow-file-added="uploadImageAdded( $file, $event, $flow )">
+        <input type="text" class="form-control"
+               ng-model="elemModel[elemId]" ng-disabled="true"
+               required>
+        <div class="thumbnail" ng-hide="$flow.files.length">
+            <!--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"/>-->
+            <!--FIXME: need use url manager-->
+            <img src="{{'http://shop.dev'+ '/imagecache/small_article/' + elemModel[elemId]}}"/>
+        </div>
+        <div class="thumbnail" ng-show="$flow.files.length">
+            <img flow-img="$flow.files[0]"/>
+        </div>
+        <div>
+            <span class="btn" flow-btn ng-hide="$flow.files.length"><i class="icon icon-file"></i>Upload File</span>
+            <span class="btn" ng-show="$flow.files.length" flow-btn>Change</span>
+            <a class="btn btn-success" ng-click="$flow.resume()" ng-show="$flow.files.length">Upload</a>
+            <span class="btn btn-danger" ng-show="$flow.files.length"
+                  ng-click="$flow.cancel()">
+                Remove
+            </span>
+        </div>
+        <p>
+            Only PNG,GIF,JPG files allowed.
+        </p>
+        <div ng-show="$flow.isUploading()">
+            <p>Queue progress:</p>
+            <div class="progress bg-light dker" ng-class="{active: $flow.isUploading()}">
+                <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                     ng-style="{ 'width': $flow.progress() * 100 + '%' }"></div>
+            </div>
+        </div>
+    </div>
+</div>

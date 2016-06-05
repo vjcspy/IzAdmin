@@ -1,0 +1,9 @@
+<input ng-if="elemType == 'text'" type="text" class="form-control" placeholder="{{elemPlaceholder}}"
+       ng-model="elemModel[elemParentbranch][elemKey]"
+       required>
+<select ng-if="elemType == 'select'" class="form-control"
+        ng-model="elemModel[elemParentbranch][elemKey]" required>
+    <option ng-selected="elemModel[elemParentbranch][elemKey]==option.id" ng-repeat="option in elemOptionData"
+            value="{{option.id}}">{{option.name}}
+    </option>
+</select>

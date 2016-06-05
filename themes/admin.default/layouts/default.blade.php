@@ -7,6 +7,8 @@
     <meta name="description" content="{!! Theme::get('description') !!}">
     {!! Theme::asset()->styles() !!}
     {!! Theme::asset()->scripts() !!}
+
+    {!! Theme::asset()->container('custom-assets')->styles() !!}
 </head>
 <body>
 {!! Theme::partial('header') !!}
@@ -18,5 +20,7 @@
 {!! Theme::partial('footer') !!}
 
 {!! Theme::asset()->container('footer')->scripts() !!}
+
+{!! Theme::asset()->container('custom-assets')->scripts() !!}
 </body>
 </html>

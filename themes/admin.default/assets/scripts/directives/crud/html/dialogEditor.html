@@ -1,0 +1,30 @@
+<!--controller dialog.js-->
+<div lazy-load="textAngular">
+    <div class="row" style="max-height: 650px;overflow: scroll;margin-top: 10px;margin-left: 3px;margin-right: 3px">
+        <form name="formValidate" class="form-horizontal form-validation" enctype="multipart/form-data">
+            <div class="panel panel-default">
+                <div class="panel-heading bg-white">
+                    <strong>Form Edit</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" ng-repeat="childElement in data.formElem">
+                        <normal-elem
+                                elem-id="{{childElement.id}}"
+                                elem-title="{{childElement.title}}"
+                                elem-model="data.formData"
+                                elem-validate="ng-minlength=0 ng-maxlength=50 required"
+                                elem-type="{{childElement.type}}"
+                                elem-placeholder="{{childElement.placeholder}}"
+                                elem-option-data="childElement.optionsData"
+                                elem-editable="{{childElement.editAble}}">
+                        </normal-elem>
+                    </div>
+                </div>
+                <footer class="panel-footer text-right">
+                    <md-button class="md-raised md-primary btn-fw m-b-sm" ng-click="saveAction()">Submit</md-button>
+                    <md-button class="md-raised md-warn btn-fw m-b-sm" ng-click="deleteAction()">Delete</md-button>
+                </footer>
+            </div>
+        </form>
+    </div>
+</div>

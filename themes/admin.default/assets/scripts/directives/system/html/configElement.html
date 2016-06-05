@@ -1,0 +1,27 @@
+<form id="elemConfig" name="formValidate" class="form-horizontal form-validation"
+      ng-if="elemData.show">
+    <div class="panel panel-default">
+        <div class="panel-heading bg-white">
+            <strong>{{elemData.groupName}}</strong>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group" ng-repeat="(key, value) in elemData.childData">
+                <label class="col-sm-3 control-label">{{key}}</label>
+                <div class="col-sm-9">
+                    <iz-form-validate-element elem-key="key" elem-parentbranch="parentBranchLabel"
+                                              elem-model="configData"
+                                              elem-validate="ng-minlength=0 ng-maxlength=50 required"
+                                              elem-type="{{value.type}}"
+                                              elem-placeholder="{{value.placeholder}}"
+                                              elem-option-data="value.optionsData"></iz-form-validate-element>
+                </div>
+            </div>
+            <footer class="panel-footer text-right">
+                <button ng-disabled="config.syncTaskSaving || formValidate.$invalid" type="submit" class="btn btn-info" ng-click="saveConfig()">
+                    Save
+                </button>
+            </footer>
+        </div>
+    </div>
+</form>
