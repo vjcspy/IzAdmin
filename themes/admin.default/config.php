@@ -76,6 +76,34 @@ return [
                 ],
             'dependency' => ['angular']
         ],
+        'angular-bootstrap'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js']
+                ],
+            'dependency' => ['angular','bootstrap']
+        ],
+        'angular-cookies'   => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-bootstrap/angular-cookies.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+        'angular-translate'=>[
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/angular-translate/angular-translate.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
+        'ngstorage'=>[
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/ngstorage/ngStorage.min.min.js']
+                ],
+            'dependency' => ['angular']
+        ]
     ],
 
     /*
@@ -112,7 +140,6 @@ return [
         'before'             => function ($theme) {
             // You can remove this line anytime.
             $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
-
             // Breadcrumb template.
             // $theme->breadcrumb()->setTemplate('
             //     <ul class="breadcrumb">
@@ -131,27 +158,6 @@ return [
         // this event should call to assign some assets,
         // breadcrumb template.
         'beforeRenderTheme'  => function ($theme) {
-           $izAsset = app('izAsset');
-            /** @var \Modules\IzCore\Repositories\Theme\Asset $izAsset */
-            $izAsset->addAssets('all',
-                [
-                    'angular-material',
-                    'angular',
-                    'bootstrap',
-                    'jquery',
-                    'angular-aria',
-                    'angular-messages',
-                    'angular-animate',
-                    'angular-ui-router',
-                    'oclazyload',
-                    'angular-sanitize',
-                    'angular-toastr',
-                    'angular-loading-bar',
-                    'lodash',
-                    'components-font-awesome'
-                ]
-            );
-
             // Partial composer.
             // $theme->partialComposer('header', function($view)
             // {
