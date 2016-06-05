@@ -131,8 +131,9 @@ return [
         // this event should call to assign some assets,
         // breadcrumb template.
         'beforeRenderTheme'  => function ($theme) {
-           
-            app('izAsset')->addAssets(
+           $izAsset = app('izAsset');
+            /** @var \Modules\IzCore\Repositories\Theme\Asset $izAsset */
+            $izAsset->addAssets('all',
                 [
                     'angular-material',
                     'angular',
