@@ -151,7 +151,7 @@ return [
             // $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
 
             /*TODO: IzAdmin Config Provider*/
-            /** @var \Modules\IzAdmin\Repositories\IzAdminConfigProvider $izAdminConfigs */
+            /** @var \Modules\IzAdmin\Repositories\IzAdminConfig $izAdminConfigs */
             $izAdminConfigs = app()['izAdminConfig'];
             $theme->partialComposer(
                 'izAdminConfigProvider',
