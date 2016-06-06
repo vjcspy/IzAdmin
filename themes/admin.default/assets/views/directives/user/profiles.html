@@ -1,0 +1,10 @@
+<form role="form" ng-show="IzSentinel.isLogged()">
+    <legend>Thông tin tài khoản</legend>
+
+    <div class="form-group">
+        Xin chào,&nbsp;<label>{{IzSentinel.getUserData()['first_name'] + ' ' + IzSentinel.getUserData()['last_name']}}</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" ng-click="logout()">Đăng xuất</button>
+</form>

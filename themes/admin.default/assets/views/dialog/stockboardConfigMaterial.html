@@ -1,0 +1,49 @@
+<md-dialog aria-label="Cài đặt">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cài Đặt</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="Cancel">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px;max-height:810px;min-width: 600px">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Chung">
+                    <md-content class="md-padding">
+                        <general-config></general-config>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Hiển Thị">
+                    <md-content class="md-padding">
+                        <show-hide-column></show-hide-column>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Lọc">
+                    <md-content class="md-padding">
+                        <filter-and-sorter></filter-and-sorter>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Chỉ Số">
+                    <md-content class="md-padding">
+                        <select-data-custom-col></select-data-custom-col>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" style="background-color: ghostwhite">
+            <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank">-->
+            <!--More on Wikipedia-->
+            <!--</md-button>-->
+            <span flex></span>
+            <!--<md-button class="md-raised" ng-click="cancel()" aria-label="Cancel">-->
+            <!--Cancel-->
+            <!--</md-button>-->
+            <!--<md-button class="md-raised md-primary" ng-click="saveConfig('useful')" style="margin-right:20px;" aria-label="Save">-->
+            <!--Save-->
+            <!--</md-button>-->
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,6 @@
+<a class="btn-link" ng-click="StockBoardConfig.columnPosition.downPos(colName)"><i class="fa fa-caret-left"></i></a>
+<span ng-repeat="child in StockBoardConfig.getBoardColumn()[colName].children"
+      ng-class="{hidden:StockBoardConfig.columnPosition.currentPos(colName) != $index}">
+    <span header-stockboad-config="{{child.data}}">{{child.name}}</span>
+</span>
+<a class="btn-link" ng-click="StockBoardConfig.columnPosition.upPos(colName)"><i class="fa fa-caret-right"></i></a>

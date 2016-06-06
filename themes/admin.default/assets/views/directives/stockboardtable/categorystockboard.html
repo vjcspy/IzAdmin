@@ -1,0 +1,53 @@
+<div class="row category-stockboard">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown" ng-class="{open:data.isOpenCustomCategory}">
+          <a href="#" class="dropdown-toggle" ng-click="data.isOpenCustomCategory = !data.isOpenCustomCategory">Danh mục<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li style="display: block" ng-repeat="userCat in StockBoardCategory.getUserCategory()"
+                ng-class="{active:userCat==StockBoardCategory.getCurrentCustomCategory()}">
+              <a href="#" ng-click="StockBoardCategory.selectCategory(userCat)">
+                                <span ng-hide="data['isEditing_' + $index] === true" style="width: 100%;">
+                                    {{userCat.value.catName | cut:true:20}}
+                                </span>
+                                <span ng-hide="data['isEditing_' + $index] != true">
+                                    <input ng-model="userCat.value.catName" type="text" class="form-control edit-input">
+                                </span>
+
+                            <span ng-hide="data['isEditing_' + $index] === true" class="pull-right edit-group" style="margin-right: -10px;">
+                                <button type="button" class="btn btn-sm btn-default" ng-click="data['isEditing_' + $index] = true"><span
+                                  class="glyphicon glyphicon-pencil"></span></button>
+                                <button type="button" class="btn btn-sm btn-default" ng-click="StockBoardCategory.removeCategory($index)"><span
+                                  class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                                <span ng-hide="data['isEditing_' + $index] != true" class="pull-right edit-group" style="margin-right: -10px;">
+                                <button type="submit" class="btn btn-sm btn-default"
+                                        ng-click="data['isEditing_' + $index] = false;StockBoardCategory.updateOrCreateUserCategory(userCat)"><span
+                                  class="glyphicon glyphicon-ok"></span></button>
+                                </span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                                <span>
+                                    <input ng-model="newCategory" type="text" class="form-control edit-input">
+                                </span>
+                                 <span class="pull-right edit-group" style="margin-right: -10px;">
+                                <button type="button" class="btn btn-sm btn-default" ng-click="addNewCate()"><span
+                                  class="glyphicon glyphicon-plus"></span></button>
+                                 </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">HOSE</a></li>
+        <li><a href="#">HNX</a></li>
+        <li><a href="#">UPCOM</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</div>
