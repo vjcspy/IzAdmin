@@ -16,7 +16,7 @@ return [
                     'scripts' => ['bower_components/angular-material/angular-material.min.js'],
                     'styles'  => ['bower_components/angular-material/angular-material.min.css']
                 ],
-            'dependency' => ['angular', 'bootstrap']
+            'dependency' => ['angular']
         ],
         'angular-messages'    => [
             'sources'    =>
@@ -147,7 +147,8 @@ return [
         'before'             => function ($theme) {
             // You can remove this line anytime.
             /** @var \Teepluss\Theme\Theme $theme */
-            $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
+
+            // $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
 
             /*TODO: IzAdmin Config Provider*/
             /** @var \Modules\IzAdmin\Repositories\IzAdminConfigProvider $izAdminConfigs */

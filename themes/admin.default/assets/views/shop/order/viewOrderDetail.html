@@ -1,0 +1,277 @@
+<!--TODO: best solution to hiden div in parent $state-->
+<div ng-show="$state.current.name === 'sales.detail'">
+    <div class="row">
+        <div class="navbar-form navbar-right">
+            <button md-ink-ripple="" class="md-btn md-raised m-b btn-fw bg-white" ui-sref="sales.vieworder">Quay lại
+            </button>
+            <button ng-show="order.state ==0" md-ink-ripple=""
+                    class="md-btn md-raised m-b btn-fw brown-200"
+                    mwl-confirm
+                    title="Bạn chắc chứ?"
+                    message="Hủy đơn hàng này?"
+                    confirm-text="Yes <i class='glyphicon glyphicon-ok'></i>"
+                    cancel-text="No <i class='glyphicon glyphicon-remove'></i>"
+                    placement="bottom"
+                    on-confirm="cancelOrder()"
+                    on-cancel="cancelClicked = true"
+                    confirm-button-type="danger"
+                    cancel-button-type="default">Hủy đơn hàng này
+            </button>
+            <button ng-show="order.state ==2 ||order.state ==0" md-ink-ripple=""
+                    class="md-btn md-raised m-b btn-fw indigo" ng-click="shipOrder()">Vận chuyển
+            </button>
+            <button ng-show="order.state ==1 ||order.state ==0" md-ink-ripple=""
+                    class="md-btn md-raised m-b btn-fw indigo-300" ng-click="invoiceOrder()">Thanh
+                toán
+            </button>
+            <button ng-show="order.state !=5 " md-ink-ripple="" class="md-btn md-raised m-b btn-fw pink"
+                    ng-click="refundOrder()">Refund
+            </button>
+        </div>
+    </div>
+
+    <!-- Customer & order history-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thông tin khách hàng</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="first_name">Họ:</label>
+                                <input ng-model="order.customer.first_name" type="text" disabled class="form-control"
+                                       id="first_name"
+                                       placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Tên:</label>
+                                <input ng-model="order.customer.last_name" type="text" disabled class="form-control"
+                                       id="last_name"
+                                       placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input ng-model="order.customer.email" type="text" disabled class="form-control"
+                                       id="email" placeholder="Enter email"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">SĐT:</label>
+                                <input ng-model="order.customer.phone" type="text" disabled class="form-control"
+                                       id="phone" placeholder="Enter email"
+                                >
+                            </div>
+                            <!--<div class="form-group">-->
+                            <!--<label for="address">Địa chỉ:</label>-->
+                            <!--<input type="text" disabled class="form-control" id="address" placeholder="Enter email">-->
+                            <!--</div>-->
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="md-form-group">
+                        <textarea ng-model="order.comment" class="md-input" rows="15" disabled></textarea>
+                        <label>Lịch sử đơn hàng: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Item-->
+    <div class="panel panel-default">
+        <div class="panel-heading">Sản phẩm</div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Giá</th>
+                <th>Qty.Order</th>
+                <th>Qty.Shipped</th>
+                <th>Qty.Refunded</th>
+                <th>Stock</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in order.items">
+                <td>{{item.id}}</td>
+                <td>{{item.product_origin.name}}</td>
+                <td>{{item.product_origin.sku}}</td>
+                <td>{{ item.price +' '+ item.product_origin.currency}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.shipped}}</td>
+                <td>{{item.refunded}}</td>
+                <td>{{item.product_origin.qty}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Payment & Shipping-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Thanh toán
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="payment_amount">Khách hàng đã trả</label>
+                            <input disabled ng-model="order.payment_amount" class="form-control"
+                                   id="payment_amount"
+                                   placeholder="Nhập tiền đặt trước">
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_amount_another">Phụ phí</label>
+                            <input disabled ng-model="order.payment_amount_another"
+                                   class="form-control"
+                                   id="payment_amount_another"
+                                   placeholder="Nhập phụ phí">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Vận chuyển
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="shipping_amount">Tiền vận chuyển</label>
+                            <input disabled ng-model="order.shipping_amount" class="form-control"
+                                   id="shipping_amount"
+                                   placeholder="Nhập tiền vận chuyển">
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_comment">Ghi chú khi vận chuyển</label>
+                            <input disabled ng-model="order.shipping_comment" class="form-control"
+                                   id="shipping_comment"
+                                   placeholder="Nhập ghi chú khi vận chuyển">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--comment & totals-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="md-form-group">
+                        <textarea ng-model="order.comment" class="md-input" rows="8"></textarea>
+                        <label>Ghi chú đơn hàng: </label>
+                    </div>
+                    <button ng-disabled="isUpdateComment" ng-click="updateComment()"
+                            class="md-btn md-raised m-b btn-fw green pull-right">
+                        Cập nhật ghi chú
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Tổng tiền sản phẩm:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.subtotal,2,'.',',')}} VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Phí vận chuyển:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.shipping_amount,2,'.',',')}}
+                                  VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Phụ phí:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.payment_amount_another,2,'.',',')}}
+                                  VND</b></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Khách đã trả:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.payment_amount,2,'.',',')}}
+                            VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Tiền Refund:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.refund_amount,2,'.',',')}}
+                            VND</b></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <b>Tổng:</b>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.grand_total,2,'.',',')}}
+                                  VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <b>Khách còn thiếu:</b>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.total_paid,2,'.',',')}}
+                                  VND</b></span>
+                        </div>
+                    </div>
+                    <!--<div class="row">-->
+                    <!--<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">-->
+                    <!--<span class="pull-right">-->
+                    <!--<button ng-disabled="status.order.saving || status.items.addingCustomProduct"-->
+                    <!--md-ink-ripple="" ng-click="updateOrder()"-->
+                    <!--class="md-btn md-raised m-b btn-fw indigo">Cập nhật-->
+                    <!--</button>-->
+                    <!--<button ng-disabled="status.order.saving || status.items.addingCustomProduct"-->
+                    <!--ng-click="saveOrder()" md-ink-ripple=""-->
+                    <!--class="md-btn md-raised m-b btn-fw green">-->
+                    <!--Tạo Đơn Hàng-->
+                    <!--</button>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view></div>

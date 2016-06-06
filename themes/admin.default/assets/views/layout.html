@@ -1,49 +1,20 @@
-<div class="row">
-    <nav class="navbar navbar-inverse" role="navigation" style="background-color: #434A54;border-radius: 0px;margin-bottom: 0px">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<a class="navbar-brand" style="color: darkturquoise;line-height:33px;font-family: 'Comic Sans MS'">Smart Price</a>-->
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
-                <div class="row" style="padding-top: 10px">
-                    <p class="navbar-text navbar-right">
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-left navbar-text">
-                        <div class="input-group">
-                            <input type="text" class="form-control" ng-model="AppCtrlCtrl.model.ticker"
-                                   ng-keypress="($event.which === 13) ? addTicker() : 0" style="text-transform: uppercase">
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary" data-type="last" ng-click="addTicker()">Thêm</button>
-                  </span>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 pull-right navbar-text">
-                        <a md-ink-ripple class="btn btn-addon btn-default" ng-click="openUser()">
-                            <i class="fa fa-user"></i>&nbsp;Tài Khoản
-                        </a>
-                        <button class="btn btn-addon btn-default" ng-click="openStockBoardConfig()">
-                            <i class="fa fa-sun-o"></i>
-                            &nbsp;Cài Đặt
-                        </button>
-                    </div>
-                </div>
-                </p>
-            </div>
-        </div>
-    </nav>
+  <!-- aside: include(navigation + profile user) -->
+  <md-sidenav id="aside" class="app-aside md-sidenav-left" ng-class="{'folded': app.setting.asideFolded || $state.current.data.folded}" ui-view="aside@" md-component-id="aside">
+  </md-sidenav> 
+  <!-- / aside -->
+  
+  <!-- content -->
+  <div id="content" class="app-content" role="main"  ui-view="content@">
+  </div>
+  <!-- / content -->
+
+
+<div class="modal fade" id="user" data-backdrop="false">
+  <div class="right w-xl bg-white md-whiteframe-z2" ng-include="'modules/themes/admin.default/assets/views/partials/aside.tpl.user.html'">
+  </div>
 </div>
-<category-stockboard></category-stockboard>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div ui-view=""></div>
-    </div>
-</div>
-<div ng-show="isOpenUserForm">
-    <div ng-include="'views/partials/aside.tpl.user.html'">
-    </div>
+
+<div class="modal fade" id="chat" data-backdrop="false">
+  <div class="right w-xxl bg-white md-whiteframe-z2" ng-include="'modules/themes/admin.default/assets/views/partials/aside.tpl.chat.html'">
+  </div>
 </div>

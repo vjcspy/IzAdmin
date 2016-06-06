@@ -1,0 +1,38 @@
+<div class="padding-out">
+    <div class="box">
+        <div class="col-md-3 col-sm-6">
+            <div class="p-md">
+                <div lazy-load="angularBootstrapNavTree">
+                    <abn-tree
+                            tree-data="my_data"
+                            tree-control="my_tree"
+                            on-select="my_tree_handler(branch)"
+                            expand-level="2"
+                            initial-selection="Granny Smith"
+                            icon-leaf="fa fa-file-o"
+                            icon-expand="fa fa-angle-right"
+                            icon-collapse="fa fa-angle-down"
+                    >
+                    </abn-tree>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-6 bg-light b-l bg-auto">
+            <div class="p-md">
+                <div class="alert alert-info">{{output}}</span>
+                </div>
+                <div class="line b-b m-v-md"></div>
+                <div lazy-load="izNavTree">
+                    <div lazy-load="izFormValidateElem">
+                        <!--Truyen config data vao va thay doi tren configData sau đó sẽ gửi configData lên-->
+                        <iz-config-elem config-data="configData"
+                                        current-branch-data="currentBranchData"
+                                        parent-branch-label="parentBranch" config-save-url=""
+                        ></iz-config-elem>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,10 +13,8 @@
     {!! Theme::asset()->container('custom-assets')->styles() !!}
 </head>
 <body ng-app="app">
-
-<div class="container">
-    {!! Theme::content() !!}
-</div>
+{{--View--}}
+{!! Theme::content() !!}
 {{--ConfigProvider--}}
 {!! Theme::partial('izAdminConfigProvider') !!}
 

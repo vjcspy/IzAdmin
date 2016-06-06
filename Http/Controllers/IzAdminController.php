@@ -6,7 +6,6 @@ class IzAdminController extends ThemeAbstractController {
 
     public function getIndex() {
         $this->setTheme('admin.default')->setLayout('default');
-
         $this->addAssets(
             [
                 'angular-material',
@@ -26,16 +25,17 @@ class IzAdminController extends ThemeAbstractController {
                 'angular-bootstrap',
                 'angular-cookies',
                 'angular-translate',
-                'ngstorage'
+                'ngstorage',
+                'animate-css'
             ]
         );
 
         $this->addCustomAssets(
             [
                 /*CSS*/
-                'app-css'               =>
+                'material-design-icons' =>
                     [
-                        'source'     => 'css/app.css',
+                        'source'     => 'css/material-design-icons.css',
                         'dependency' => [],
                         'theme_name' => 'admin.default'
                     ],
@@ -45,27 +45,59 @@ class IzAdminController extends ThemeAbstractController {
                         'dependency' => [],
                         'theme_name' => 'admin.default'
                     ],
+                'app-css'               =>
+                    [
+                        'source'     => 'css/app.css',
+                        'dependency' => [],
+                        'theme_name' => 'admin.default'
+                    ],
                 'izStyle-css'           =>
                     [
                         'source'     => 'css/izStyle.css',
                         'dependency' => [],
                         'theme_name' => 'admin.default'
                     ],
-                'material-design-icons' =>
-                    [
-                        'source'     => 'css/material-design-icons.css',
-                        'dependency' => [],
-                        'theme_name' => 'admin.default'
-                    ],
                 /*JS*/
-                'ui.load'              => [
-                    'source'     => 'scripts/services/ui-load.js',
-                    'dependency' => ['app'],
+                /*Directive*/
+                'lazyload'              => [
+                    'source'     => 'scripts/directives/lazyload.js',
+                    'dependency' => [],
                     'theme_name' => 'admin.default'
                 ],
-                'ui.jp'              => [
+                'ui.jp'                 => [
                     'source'     => 'scripts/directives/ui-jp.js',
-                    'dependency' => ['app'],
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                'ui-nav'                => [
+                    'source'     => 'scripts/directives/ui-nav.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                'ui-fullscreen'         => [
+                    'source'     => 'scripts/directives/ui-fullscreen.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                'ui-scroll'             => [
+                    'source'     => 'scripts/directives/ui-scroll.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                'ui-toggle'             => [
+                    'source'     => 'scripts/directives/ui-toggle.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                /*Services*/
+                'ui.load'               => [
+                    'source'     => 'scripts/services/ui-load.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
+                'ngstore'               => [
+                    'source'     => 'scripts/services/ngstore.js',
+                    'dependency' => [],
                     'theme_name' => 'admin.default'
                 ],
             ]

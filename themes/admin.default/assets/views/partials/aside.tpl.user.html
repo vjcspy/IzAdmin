@@ -1,50 +1,99 @@
-<div class="user-form animated bounceInUp">
-    <div class="box">
-        <div class="container-fluid">
-            <div ng-cloak>
-                <md-content>
-                    <md-tabs md-dynamic-height md-border-bottom>
-                        <md-tab label="TK">
-                            <md-content class="md-padding">
-                                <iz-login></iz-login>
-                                <iz-user-profiles></iz-user-profiles>
-                            </md-content>
-                        </md-tab>
-                        <md-tab label="Danh mục">
-                            <md-content class="md-padding">
-                                <h1 class="md-display-2">Tab Two</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac
-                                    dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est,
-                                    sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices
-                                    porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida.
-                                    Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor
-                                    volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at
-                                    interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus
-                                    dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus
-                                    ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                                <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere
-                                    nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus
-                                    egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit
-                                    amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed
-                                    nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi
-                                    eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed
-                                    id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                                    lectus.</p>
-                            </md-content>
-                        </md-tab>
-                        <md-tab label="Hộp thư">
-                            <md-content class="md-padding">
-                                <h1 class="md-display-2">Tab Three</h1>
-                                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi
-                                    eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed
-                                    id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                                    lectus.</p>
-                            </md-content>
-                        </md-tab>
-                    </md-tabs>
-                </md-content>
-            </div>
-        </div>
+  <div class="box">
+    <div class="p p-h-md">
+      <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">&times;</a>
+      <strong>Members</strong>
     </div>
-</div>
+    <div class="box-row">
+      <div class="box-cell">
+        <div class="box-inner">
+          <div class="list-group no-radius no-borders">
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+              <img src="images/a1.jpg" class="pull-left w-40 m-r img-circle">
+              <div class="clear">
+                <span class="font-bold block">Jonathan Doe</span>
+                <span class="clear text-ellipsis text-xs">"Hey, What's up"</span>
+              </div>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+              <img src="images/a2.jpg" class="pull-left w-40 m-r img-circle">
+              <div class="clear">
+                <span class="font-bold block">James Pill</span>
+                <span class="clear text-ellipsis text-xs">"Lorem ipsum dolor sit amet onsectetur adipiscing elit"</span>
+              </div>
+            </a>
+            <div class="p-h-md m-t p-v-xs">Work</div>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-success text-xs m-r-xs"></i>
+                <span>Jonathan Morina</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-success text-xs m-r-xs"></i>
+                <span>Mason Yarnell</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-warning text-xs m-r-xs"></i>
+                <span>Mike Mcalidek</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Cris Labiso</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Daniel Sandvid</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Helder Oliveira</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Jeff Broderik</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Daniel Sandvid</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Helder Oliveira</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Jeff Broderik</span>
+            </a>
+            <div class="p-h-md m-t p-v-xs">Partner</div>            
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-success text-xs m-r-xs"></i>
+                <span>Mason Yarnell</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-warning text-xs m-r-xs"></i>
+                <span>Mike Mcalidek</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Cris Labiso</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Jonathan Morina</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Daniel Sandvid</span>
+            </a>
+            <a data-toggle="modal" data-target="#chat" data-dismiss="modal"  class="list-group-item p-h-md">
+                <i class="fa fa-circle text-muted-lt text-xs m-r-xs"></i>
+                <span>Helder Oliveira</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-h-md p-v">
+      <p>Invite People</p>
+      <a href class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+      <a href class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+    </div>
+  </div>

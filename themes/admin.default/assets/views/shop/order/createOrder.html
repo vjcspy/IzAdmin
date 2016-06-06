@@ -1,0 +1,301 @@
+<div class="row">
+    <!--Khach hang-->
+    <accordion>
+        <accordion-group is-open="status.customer.open">
+            <accordion-heading>
+                Khách Hàng <i class="pull-right fa fa-angle-right"
+                              ng-class="{'fa-angle-down': status.customer.open, 'fa-angle-right': !status.customer.open}"></i>
+            </accordion-heading>
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Chọn khách hàng</label>
+                        <div class="col-sm-6">
+                            <ui-select ng-model="order.customer" theme="bootstrap" ng-disabled="disabled"
+                                       style="min-width: 300px;" ng-change="changeCustomer()">
+                                <ui-select-match
+                                        placeholder="Chọn khách hàng ở trong list hoặc tìm kiếm bằng tên/sdt/facebook/email">
+                                   <span ng-show="$select.selected.phone != ''"> {{$select.selected.first_name + ' ' + $select.selected.last_name + ' - SĐT: ' +
+                                    $select.selected.phone}}</span>
+                                </ui-select-match>
+                                <ui-select-choices
+                                        group-by="someGroupFn"
+                                        repeat="person in people | propsFilter: {email: $select.search, phone: $select.search, last_name: $select.search, facebook_id: $select.search}">
+                                    <div ng-bind-html="person.email | highlight: $select.search"></div>
+                                    <small>
+                                        Tên: {{person.last_name}}
+                                        - SĐT: <span ng-bind-html="''+person.phone | highlight: $select.search"></span>
+                                        - Facebook: {{person.facebook_id}}
+                                        - Email: {{person.email}}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </accordion-group>
+    </accordion>
+    <!--Item-->
+    <accordion>
+        <accordion-group is-open="status.items.open">
+            <accordion-heading>
+                Sản Phẩm <i class="pull-right fa fa-angle-right"
+                            ng-class="{'fa-angle-down': status.items.open, 'fa-angle-right': !status.items.open}"></i>
+            </accordion-heading>
+            <table class="table table-bordered table-hover table-condensed bg-white" ng-show="!data.addingItems">
+                <tr style="font-weight: bold">
+                    <td style="width:5%">ID</td>
+                    <td style="width:21%">Tên</td>
+                    <td style="width:12%">SKU</td>
+                    <td style="width:13%">Giá</td>
+                    <td style="width:11%">Tiền tệ</td>
+                    <td style="width:21%">Link</td>
+                    <td style="width:9%">SL</td>
+                    <td style="width:8%">Action</td>
+                </tr>
+                <tr ng-repeat="item in items">
+                    <td class="v-middle" ng-class="{itemInstore: item.inStore == true}">
+                        <span>{{item.id}}</span>
+                    </td>
+                    <td class="v-middle">
+                        <!-- editable username (text with validation) -->
+        <span ng-if="!item.inStore" editable-text="item.name" e-name="name" e-form="rowform"
+              onbeforesave="checkName($data, item.id)"
+              e-required>
+          {{ item.name | cut:true:20:' ...'}}
+        </span>
+                        <span ng-if="item.inStore"> {{ item.name || '' }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <!-- editable username (text with validation) -->
+        <span ng-if="!item.inStore" editable-text="item.sku" e-name="sku" e-form="rowform" onbeforesave=""
+              e-required>
+         {{ item.sku | cut:true:10:' ...'}}
+        </span>
+                        <span ng-if="item.inStore"> {{ item.sku || '' }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <!-- editable username (text with validation) -->
+        <span editable-number="item.price" e-name="price" e-form="rowform" onbeforesave=""
+              e-required>
+          {{ item.price || 0 }}
+        </span>
+                    </td>
+                    <td class="v-middle">
+         <span ng-if="!item.inStore" editable-select="item.currency" e-name="currency"
+               onshow="loadCurrency()" e-form="rowform"
+               e-ng-options="g.currency as g.currency for g in currencies">
+           {{ showCurrency(item) }}
+         </span>
+                        <span ng-if="item.inStore"> {{ item.currency || '' }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <!-- editable username (text with validation) -->
+        <span ng-if="!item.inStore" editable-text="item.link" e-name="link" e-form="rowform" onbeforesave=""
+              e-required>
+         {{ item.link | cut:true:25:' ...'}}
+        </span>
+                        <span ng-if="item.inStore"> {{ item.link || '' }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <!-- editable username (text with validation) -->
+        <span editable-number="item.qty" e-name="qty" e-form="rowform" onbeforesave="checkChangeQty($data)"
+              e-required>
+          {{ item.qty || 0 }}
+        </span>
+                    </td>
+                    <!-- <td class="v-middle">
+                         &lt;!&ndash; editable status (select-local) &ndash;&gt;
+         <span editable-select="user.status" e-name="status" e-form="rowform"
+               e-ng-options="s.value as s.text for s in statuses">
+           {{ showStatus(user) }}
+         </span>
+                     </td>
+                    -->
+                    <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveItem($data, item)"
+                              ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-xs btn-info">
+                                lưu
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                                    class="btn btn-xs btn-default">
+                                hủy
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-xs btn-info" ng-click="rowform.$show()">sửa
+                            </button>
+                            <button class="btn btn-xs btn-danger" ng-click="removeItem($index)">xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="row m">
+                <div ng-show="data.addingItems" ng-controller="ProductCrudCtrl"
+                     ng-init="configDataTable.disableEditor = 'true';configDataTable.isSupportNewRecord = false;dataTable.crudId='product_crud_order_create'"
+                     ng-include="'views/shop/product/product.html'">
+                </div>
+            </div>
+            <div class="row pull-right m">
+                <button ng-disabled="status.order.saving || status.items.addingCustomProduct"
+                        ng-show="!data.addingItems"
+                        class="md-btn md-raised m-b btn-fw blue m-b-lg"
+                        ng-click="addCustomerItemOrigin()">Tạo mới sp
+                </button>
+                <button ng-show="!data.addingItems" class="md-btn md-raised m-b btn-fw indigo m-b-lg"
+                        ng-click="data.addingItems = !data.addingItems">Thêm từ kho
+                </button>
+                <button ng-show="data.addingItems" class="md-btn md-raised m-b btn-fw green-700 m-b-lg"
+                        ng-click="updateItem();data.addingItems = !data.addingItems;$emit('remove_all_selected_datatable',[])">
+                    Cập nhật
+                </button>
+            </div>
+        </accordion-group>
+    </accordion>
+    <!--Payment & ship-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <accordion>
+                <accordion-group is-open="status.payment.open">
+                    <accordion-heading>
+                        Thanh toán<i class="pull-right fa fa-angle-right"
+                                     ng-class="{'fa-angle-down': status.customer.open, 'fa-angle-right': !status.customer.open}"></i>
+                    </accordion-heading>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="payment_amount">Khách hàng đặt trước</label>
+                            <input ng-model="order.payment.payment_amount" type="number" class="form-control"
+                                   id="payment_amount"
+                                   placeholder="Nhập tiền đặt trước">
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_amount_another">Phụ phí</label>
+                            <input ng-model="order.payment.payment_amount_another" type="number" class="form-control"
+                                   id="payment_amount_another"
+                                   placeholder="Nhập phụ phí">
+                        </div>
+                    </form>
+                </accordion-group>
+            </accordion>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <accordion>
+                <accordion-group is-open="status.shipping.open">
+                    <accordion-heading>
+                        Vận chuyển <i class="pull-right fa fa-angle-right"
+                                      ng-class="{'fa-angle-down': status.customer.open, 'fa-angle-right': !status.customer.open}"></i>
+                    </accordion-heading>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="shipping_amount">Tiền vận chuyển</label>
+                            <input ng-model="order.shipping.shipping_amount" type="number" class="form-control"
+                                   id="shipping_amount"
+                                   placeholder="Nhập tiền vận chuyển">
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_comment">Ghi chú khi vận chuyển</label>
+                            <input ng-model="order.shipping.shipping_comment" type="text" class="form-control"
+                                   id="shipping_comment"
+                                   placeholder="Nhập ghi chú khi vận chuyển">
+                        </div>
+                    </form>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+    <!--Totals-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="md-form-group">
+                        <textarea ng-model="order.comment" class="md-input" rows="11"></textarea>
+                        <label>Ghi chú cho đơn hàng này: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Tổng tiền sản phẩm:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>
+                                {{formatMoney(order.totals.subtotal,2,'.',',')}} VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Phí vận chuyển:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>
+                                {{formatMoney(order.shipping.shipping_amount,2,'.',',')}}
+                                VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Phụ phí:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>{{formatMoney(order.payment.payment_amount_another,2,'.',',')}}
+                                VND</b></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <span class=".m"><b>Đã thu trước:</b></span>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>{{formatMoney(order.payment.payment_amount,2,'.',',')}} VND</b></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <b>Tổng:</b>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>{{formatMoney(order.totals.grandtotal,2,'.',',')}}
+                                VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <b>Khách hàng phải trả:</b>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right"><b>{{formatMoney(order.totals.total_paid,2,'.',',')}}
+                                VND</b></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right">
+                                <button ng-disabled="status.order.saving || status.items.addingCustomProduct"
+                                        md-ink-ripple="" ng-click="updateOrder()"
+                                        class="md-btn md-raised m-b btn-fw indigo">Cập nhật
+                                </button>
+                                <button ng-disabled="status.order.saving || status.items.addingCustomProduct"
+                                        ng-click="saveOrder()" md-ink-ripple=""
+                                        class="md-btn md-raised m-b btn-fw green">
+                                    Tạo Đơn Hàng
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

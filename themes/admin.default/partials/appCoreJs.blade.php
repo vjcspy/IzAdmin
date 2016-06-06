@@ -305,22 +305,22 @@
                             name: 'plot',
                             module: false,
                             files: [
-                                '../libs/jquery/flot/jquery.flot.js',
-                                '../libs/jquery/flot/jquery.flot.resize.js',
-                                '../libs/jquery/flot/jquery.flot.pie.js',
-                                '../libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js',
-                                '../libs/jquery/flot-spline/js/jquery.flot.spline.min.js',
-                                '../libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js'
+                                'modules/themes/admin.default/assets/libs/jquery/flot/jquery.flot.js',
+                                'modules/themes/admin.default/assets/libs/jquery/flot/jquery.flot.resize.js',
+                                'modules/themes/admin.default/assets/libs/jquery/flot/jquery.flot.pie.js',
+                                'modules/themes/admin.default/assets/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js',
+                                'modules/themes/admin.default/assets/libs/jquery/flot-spline/js/jquery.flot.spline.min.js',
+                                'modules/themes/admin.default/assets/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js'
                             ]
                         },
                         {
                             name: 'vectorMap',
                             module: false,
                             files: [
-                                '../libs/jquery/bower-jvectormap/jquery-jvectormap-1.2.2.min.js',
-                                '../libs/jquery/bower-jvectormap/jquery-jvectormap.css',
-                                '../libs/jquery/bower-jvectormap/jquery-jvectormap-world-mill-en.js',
-                                '../libs/jquery/bower-jvectormap/jquery-jvectormap-us-aea-en.js'
+                                'modules/themes/admin.default/assets/libs/jquery/bower-jvectormap/jquery-jvectormap-1.2.2.min.js',
+                                'modules/themes/admin.default/assets/libs/jquery/bower-jvectormap/jquery-jvectormap.css',
+                                'modules/themes/admin.default/assets/libs/jquery/bower-jvectormap/jquery-jvectormap-world-mill-en.js',
+                                'modules/themes/admin.default/assets/libs/jquery/bower-jvectormap/jquery-jvectormap-us-aea-en.js'
                             ]
                         },
                         {
@@ -356,12 +356,8 @@
                     ['$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG',
                         function ($stateProvider, $urlRouterProvider, MODULE_CONFIG) {
                             $urlRouterProvider
-                                    .otherwise('/test');
+                                    .otherwise('/app/test');
                             $stateProvider
-                                    .state('test',{
-                                        url:'/test',
-                                        template:"<div>Hello</div>"
-                                    })
                                     .state('app', {
                                         abstract: true,
                                         url: '/app',
@@ -375,12 +371,15 @@
                                             'content': {
                                                 templateUrl: 'modules/themes/admin.default/assets/views/content.html'
                                             }
-                                        },
-                                        resolve: {}
+                                        }
+                                    })
+                                    .state('app.test',{
+                                        url:'/test',
+                                        template:"<div>Hello</div>"
                                     })
                                     .state('app.dashboard', {
                                         url: '/dashboard',
-                                        templateUrl: 'views/pages/dashboard.html',
+                                        templateUrl: 'modules/themes/admin.default/assets/views/pages/dashboard.html',
                                         data: {title: 'Dashboard', folded: true},
                                         resolve: {
                                             deps: load([

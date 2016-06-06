@@ -1,0 +1,87 @@
+<div class="panel panel-default" style="top: 10px;">
+    <div class="panel-heading bg-white">
+        <b>Thanh toán đơn hàng</b><br>
+    </div>
+    <div class="panel-body">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Tiền khách hàng trả</label>
+                <input ng-model="newPaymentAmount" type="number" class="form-control" id="exampleInputEmail1"
+                       placeholder="Nhập số tiền">
+            </div>
+            <hr>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <span class=".m"><b>Tổng tiền sản phẩm:</b></span>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.subtotal,2,'.',',')}} VND</b></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <span class=".m"><b>Phí vận chuyển:</b></span>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.shipping_amount,2,'.',',')}}
+                                  VND</b></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <span class=".m"><b>Phụ phí:</b></span>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.payment_amount_another,2,'.',',')}}
+                                  VND</b></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <span class=".m"><b>Đã thu trước:</b></span>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.payment_amount,2,'.',',')}}
+                            VND</b></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <span class=".m"><b>Tiền Refund:</b></span>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.refund_amount,2,'.',',')}}
+                            VND</b></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <b>Tổng:</b>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.grand_total,2,'.',',')}}
+                                  VND</b></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <b>Khách còn thiếu:</b>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.total_paid,2,'.',',')}}
+                                  VND</b></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button ng-disabled="status.invoiceSaving"
+                        md-ink-ripple="" ng-click="updateInvoice()"
+                        class="md-btn md-raised m-b btn-fw indigo pull-right">Cập nhật
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

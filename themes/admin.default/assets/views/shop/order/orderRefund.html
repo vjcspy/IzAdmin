@@ -1,0 +1,205 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-init="status.items.open = false">
+        <accordion>
+            <accordion-group is-open="status.items.open">
+                <accordion-heading>
+                    Refund và tính tiền <i class="pull-right fa fa-angle-right"
+                                           ng-class="{'fa-angle-down': status.items.open, 'fa-angle-right': !status.items.open}"></i>
+                </accordion-heading>
+                <small class="text-muted">
+                    - <b>Refund sản phẩm:</b> Nhập số lượng của sản phẩm mà mà khách hàng muốn refund. <br>
+                    - Tiền refund sẽ được sẽ được tự động tính bằng cách lấy giá <b>x</b> số lượng refund. Tuy nhiên bạn
+                    có
+                    thế thay đổi tùy ý. <br>
+                    - Sau khi cập nhật refund, hệ thống sẽ tự động điều chỉnh lại số tiền và số tiền
+                    KHÁCH CÒN THIẾU
+                    - Lưu ý: Quy ước số tiền refund là số tiền đã trả lại cho khách hàng(ở đây mình sẽ quy ước trên danh
+                    nghĩa). Công thức tính tổng tiền
+                    và tiền thừa thiếu như sau:(việc coi khoản refund là khoản trả thực tế và danh nghĩa thì có 2 công
+                    thức
+                    tính hoàn toàn khác nhau)
+                    <b>Tổng(giá trị của đơn hàng) = </b> Tổng tiền sản phẩm + Tiền Shipping + Tiền Phụ Phí - Số tiền
+                    refund
+                    <br>
+                    <b>Tiền thừa thiếu = </b> Tổng - Tiền đã thu của khách hàng. <br>
+                    Nếu sô tiền thừa thiếu là số âm(tức là phải trả lại cho khách hàng) thì sau khi refund hệ thống sẽ
+                    tự
+                    động trừ vào số tiền đã thu của khách hàng. Sau đó sẽ update lại trạng thái của đơn hàng. <br>
+                    - <b>Lơi Nhuận cuối kì</b> được tính = Doanh thu - Chi phí <br>
+                    Doanh Thu: Số tiền đã thu của khách trong từng đơn hàng <br>
+                    Chi Phí: Tiền nhập kho sản phẩm(trong này đã bao gồm chi phí shipping của sản phẩm + giá của sản
+                    phẩm)
+                    <br>
+                </small>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Sản Phẩm </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-condensed bg-white">
+                <tr style="font-weight: bold">
+                    <td style="width:5%">#</td>
+                    <td>Tên</td>
+                    <td>SKU</td>
+                    <td>Giá</td>
+                    <td>Tiền tệ</td>
+                    <td>SL.Mua</td>
+                    <td>SL.Đã chuyển</td>
+                    <td>SL.refunded</td>
+                    <td>Action</td>
+                </tr>
+                <tr ng-repeat="item in order.items">
+                    <td class="v-middle" ng-class="{itemInstore: item.inStore == true}">
+                        <span>{{item.id}}</span>
+                    </td>
+                    <td class="v-middle">
+                        <span> {{ item.product_origin.name | cut:true:10:' ...'}}</span>
+                    </td>
+                    <td class="v-middle">
+                        <span> {{ item.product_origin.sku |cut:true:10:' ...'}}</span>
+                    </td>
+                    <td class="v-middle">
+                        {{ item.price || 0 }}
+                    </td>
+                    <td class="v-middle">
+                        <span> {{ item.product_origin.currency || '' }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <span> {{ item.qty }}</span>
+                    </td>
+                    <td class="v-middle">
+                        <span> {{ item.shipped }}</span>
+                    </td>
+                    <td class="v-middle">
+                            <span editable-number="item.refunded" e-name="qty" e-form="rowform"
+                                  onbeforesave="checkQtyRefund($data,item)"
+                                  e-required>{{ item.refunded}} </span>
+                    </td>
+                    <td style="white-space: nowrap">
+                        <form editable-form name="rowform" onbeforesave="saveItem($data, item.id)"
+                              ng-show="rowform.$visible"
+                              class="form-buttons form-inline" shown="inserted == item">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-xs btn-info">
+                                lưu
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                                    class="btn btn-xs btn-default">
+                                hủy
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible && item.qty > item.refunded">
+                            <button class="btn btn-xs btn-info" ng-click="rowform.$show()">sửa
+                            </button>
+                            <button class="btn btn-xs btn-danger" ng-click="refundAllRow(item)">all</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6"></div>
+
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Tổng tiền sản phẩm:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.subtotal,2,'.',',')}} VND</b></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Phí vận chuyển:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>
+                                  {{formatMoney(order.shipping_amount,2,'.',',')}}
+                                  VND</b></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Phụ phí:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.payment_amount_another,2,'.',',')}}
+                                  VND</b></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Đã thu của khách:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.payment_amount,2,'.',',')}}
+                            VND</b></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Refund trước đó:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <span class="pull-right"><b>{{formatMoney(order.refund_amount,2,'.',',')}}
+                            VND</b></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <span class=".m"><b>Tiền Refund lần này:</b></span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="pull-right">
+                                <b><a editable-number="order.refund_amount_new" e-min="0"
+                                      onbeforesave="checkRefundAmount($data,item)">
+                                    {{formatMoney (order.refund_amount_new,2,'.',',') }} VND
+                                </a></b>
+                            </span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <b>Tổng:</b>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.grand_total,2,'.',',')}}
+                                  VND</b></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <b>Khách còn thiếu:</b>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                              <span class="pull-right"><b>{{formatMoney(order.total_paid,2,'.',',')}}
+                                  VND</b></span>
+                    </div>
+                </div>
+                <div class="form-group pull-right">
+                    <div class="row pull-right m">
+                        <button class="md-btn md-raised m-b btn-fw blue m-b-lg"
+                                ng-click="back()">Quay lại
+                        </button>
+                        <button class="md-btn md-raised m-b btn-fw indigo m-b-lg"
+                                ng-click="updateRefund()">Cập nhật Refund
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
