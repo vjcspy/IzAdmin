@@ -100,6 +100,11 @@ class IzAdminController extends ThemeAbstractController {
                     'dependency' => [],
                     'theme_name' => 'admin.default'
                 ],
+                'IzAdminConfigService'               => [
+                    'source'     => 'scripts/services/core/IzAdminConfigService.js',
+                    'dependency' => [],
+                    'theme_name' => 'admin.default'
+                ],
             ]
         );
 

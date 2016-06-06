@@ -373,9 +373,9 @@
                                             }
                                         }
                                     })
-                                    .state('app.test',{
-                                        url:'/test',
-                                        template:"<div>Hello</div>"
+                                    .state('app.test', {
+                                        url: '/test',
+                                        template: "<div>Hello</div>"
                                     })
                                     .state('app.dashboard', {
                                         url: '/dashboard',
@@ -1224,8 +1224,10 @@
 {{--App Core Controller--}}
 <script>
     angular.module('app')
-            .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$document', '$location', '$rootScope', '$timeout', '$mdSidenav', '$mdColorPalette', '$anchorScroll',
-                function ($scope, $translate, $localStorage, $window, $document, $location, $rootScope, $timeout, $mdSidenav, $mdColorPalette, $anchorScroll) {
+            .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$document', '$location', '$rootScope', '$timeout',
+                '$mdSidenav', '$mdColorPalette', '$anchorScroll', 'IzAdminConfigService',
+                function ($scope, $translate, $localStorage, $window, $document, $location, $rootScope, $timeout, $mdSidenav, $mdColorPalette,
+                          $anchorScroll, IzAdminConfigService) {
                     // add 'ie' classes to html
                     var isIE = !!navigator.userAgent.match(/MSIE/i) || !!navigator.userAgent.match(/Trident.*rv:11\./);
                     isIE && angular.element($window.document.body).addClass('ie');
@@ -1269,6 +1271,7 @@
                         password: ''
                     };
 
+                    $scope.IzAdminConfigService = IzAdminConfigService;
 
                     $scope.setTheme = function (theme) {
                         $scope.app.setting.theme = theme;

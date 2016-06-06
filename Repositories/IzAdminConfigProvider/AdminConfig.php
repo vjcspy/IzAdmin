@@ -14,7 +14,8 @@ class AdminConfig implements AdminConfigInterface {
     public function handle() {
         // TODO: Implement handle() method.
         return [
-            'path' => 'modules/themes'
+            'path' => 'modules/themes',
+            'appFuncName'=>'Admin Function'
         ];
     }
 }
