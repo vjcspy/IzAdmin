@@ -146,7 +146,18 @@ return [
         // you want inheriting.
         'before'             => function ($theme) {
             // You can remove this line anytime.
+            /** @var \Teepluss\Theme\Theme $theme */
             $theme->setTitle('Copyright ©  2013 - Laravel.in.th');
+
+            /*TODO: IzAdmin Config Provider*/
+            /** @var \Modules\IzAdmin\Repositories\IzAdminConfigProvider $izAdminConfigs */
+            $izAdminConfigs = app()['izAdminConfig'];
+            $theme->partialComposer(
+                'izAdminConfigProvider',
+                function ($view) use ($izAdminConfigs) {
+                    $view->with('izAdminConfigs', $izAdminConfigs->initConfig());
+                });
+
             // Breadcrumb template.
             // $theme->breadcrumb()->setTemplate('
             //     <ul class="breadcrumb">

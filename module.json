@@ -1,15 +1,16 @@
 {
-    "name": "IzAdmin",
-    "alias": "izadmin",
-    "description": "",
-    "keywords": [],
-    "active": 1,
-    "order": 0,
-    "providers": [
-        "Modules\\IzAdmin\\Providers\\IzAdminServiceProvider"
-    ],
-    "aliases":{},
-    "files": [
-        "start.php"
-    ]
+  "name": "IzAdmin",
+  "alias": "izadmin",
+  "description": "",
+  "keywords": [],
+  "active": 1,
+  "order": 0,
+  "providers": [
+    "Modules\\IzAdmin\\Providers\\IzAdminServiceProvider",
+    "Modules\\IzAdmin\\Providers\\IzAdminServiceConfigProvider"
+  ],
+  "aliases": {},
+  "files": [
+    "start.php"
+  ]
 }

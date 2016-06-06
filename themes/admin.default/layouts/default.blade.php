@@ -17,6 +17,8 @@
 <div class="container">
     {!! Theme::content() !!}
 </div>
+{{--ConfigProvider--}}
+{!! Theme::partial('izAdminConfigProvider') !!}
 
 {{--Assets scripts in bower--}}
 {!! Theme::asset()->container('footer')->scripts() !!}

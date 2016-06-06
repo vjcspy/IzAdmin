@@ -1,7 +1,7 @@
 {{--App dependency--}}
 <script>
     'use strict';
-   var app =  angular
+    var app = angular
             .module('app', [
                 'ngAnimate',
                 'ngAria',
@@ -358,48 +358,36 @@
                             $urlRouterProvider
                                     .otherwise('/test');
                             $stateProvider
-                                    .state('test', {
-                                        url: '/test',
-                                        templateUrl: 'views/layout.html'
+                                    .state('test',{
+                                        url:'/test',
+                                        template:"<div>Hello</div>"
                                     })
                                     .state('app', {
                                         abstract: true,
                                         url: '/app',
                                         views: {
                                             '': {
-                                                templateUrl: 'views/layout.html'
+                                                templateUrl: 'modules/themes/admin.default/assets/views/layout.html'
                                             },
                                             'aside': {
-                                                templateUrl: 'views/aside.html'
+                                                templateUrl: 'modules/themes/admin.default/assets/views/aside.html'
                                             },
                                             'content': {
-                                                templateUrl: 'views/content.html',
-                                                controller: function ($scope, getUser) {
-                                                    $scope.user.email = getUser.data.email;
-                                                    $scope.user.first_name = getUser.data.first_name == null ? '' : getUser.data.first_name;
-                                                    $scope.user.last_name = getUser.data.last_name == null ? '' : getUser.data.last_name;
-                                                    $scope.user.name = $scope.user.first_name + ' ' + $scope.user.last_name;
-                                                }
+                                                templateUrl: 'modules/themes/admin.default/assets/views/content.html'
                                             }
                                         },
-                                        resolve: {
-                                            getUser: function ($http, urlManagement) {
-                                                return $http({
-                                                    method: 'GET',
-                                                    url: urlManagement.getUrlByKey('auth_account') + '/user'
-                                                }).then(function (response) {
-                                                    return response;
-                                                }, function (reject) {
-                                                    return reject;
-                                                });
-                                            }
-                                        }
+                                        resolve: {}
                                     })
                                     .state('app.dashboard', {
                                         url: '/dashboard',
                                         templateUrl: 'views/pages/dashboard.html',
                                         data: {title: 'Dashboard', folded: true},
-                                        resolve: {deps: load(['scripts/controllers/chart.js', 'scripts/controllers/vectormap.js']).deps}
+                                        resolve: {
+                                            deps: load([
+                                                'modules/themes/admin.default/assets/scripts/controllers/chart.js',
+                                                'modules/themes/admin.default/assets/scripts/controllers/vectormap.js'
+                                            ]).deps
+                                        }
                                     })
                                     .state('app.analysis', {
                                         url: '/analysis',
