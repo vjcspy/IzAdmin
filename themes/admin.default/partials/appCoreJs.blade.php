@@ -24,7 +24,7 @@
                 // 'iz.tree',
                 // 'mwl.confirm',
                 // 'ngLodash',
-                'toastr',
+                'toastr'
                 // 'urlManagement',
                 // 'ngDialog',
                 // 'normalForm',
@@ -85,21 +85,69 @@
                     return {
                         'responseError': function (rejection) {
                             // do something on error
-                            //console.log(rejection.status);
                             if (rejection.hasOwnProperty('status') && rejection.status === 401) {
                                 $injector.get('toastr').error('Please login !', '');
-                                $injector.get('$state').go('access.signin');
-                                //if (canRecover(rejection)) {
-                                //    return responseOrNewPromise
-                                //}
-
+                                 $injector.get('$state').go('access.signin');
                             }
+                            /*show error 400*/
+                            if (rejection.hasOwnProperty('status') && rejection.status === 400 && rejection.data.mess) {
+                                $injector.get('toastr').error(rejection.data.mess, '');
+                            }
+
+                            /*server error*/
+                            if (rejection.hasOwnProperty('status') && rejection.status === 500) {
+                                $injector.get('toastr').error('Server Error!');
+                            }
+                            /*Listen none valid data*/
+                            if (rejection.hasOwnProperty('status') && rejection.status == 422) {
+                                $.each(rejection.data, function (k, v) {
+                                    $.each(v, function (_k, _v) {
+                                        $injector.get('toastr').error(_v);
+                                    });
+                                });
+                            }
+
                             return $q.reject(rejection);
 
                         }
                     };
                 });
-            }]);
+            }])
+            .config(function (toastrConfig) {
+                angular.extend(toastrConfig, {
+                    autoDismiss: false,
+                    containerId: 'toast-container',
+                    maxOpened: 0,
+                    newestOnTop: true,
+                    positionClass: 'toast-top-right',
+                    preventDuplicates: false,
+                    preventOpenDuplicates: false,
+                    target: 'body',
+                    allowHtml: true,
+                    closeButton: false
+                    // closeHtml: '<button>&times;</button>',
+                    // extendedTimeOut: 1000,
+                    // iconClasses: {
+                    //   error: 'toast-error',
+                    //   info: 'toast-info',
+                    //   success: 'toast-success',
+                    //   warning: 'toast-warning'
+                    // },
+                    // messageClass: 'toast-message',
+                    // onHidden: null,
+                    // onShown: null,
+                    // onTap: null,
+                    // progressBar: false,
+                    // tapToDismiss: true,
+                    // templates: {
+                    //   toast: 'directives/toast/toast.html',
+                    //   progressbar: 'directives/progressbar/progressbar.html'
+                    // },
+                    // timeOut: 5000,
+                    // titleClass: 'toast-title',
+                    // toastClass: 'toast'
+                });
+            });
 
 </script>
 
@@ -356,7 +404,7 @@
                     ['$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG',
                         function ($stateProvider, $urlRouterProvider, MODULE_CONFIG) {
                             $urlRouterProvider
-                                    .otherwise('/app/test');
+                                    .otherwise('/app/dashboard');
                             $stateProvider
                                     .state('app', {
                                         abstract: true,
@@ -370,6 +418,18 @@
                                             },
                                             'content': {
                                                 templateUrl: 'modules/themes/admin.default/assets/views/content.html'
+                                            }
+                                        },
+                                        resolve: {
+                                            authenticate: function ($q, IzSentinel, $state) {
+                                                var defer = $q.defer();
+                                                IzSentinel.authenticate().then(function (isLogged) {
+                                                    if (!isLogged)
+                                                        return $state.go('access.signin');
+                                                    else
+                                                        return defer.resolve(true);
+                                                });
+                                                return defer.promise;
                                             }
                                         }
                                     })
@@ -785,23 +845,15 @@
                                     })
                                     .state('access.signin', {
                                         url: '/signin',
-                                        templateUrl: 'views/pages/signin.html',
+                                        templateUrl: 'modules/themes/admin.default/assets/views/pages/signin.html',
                                         resolve: {
-                                            checkLogin: function ($http, urlManagement, $state) {
-                                                return $http({
-                                                    method: 'GET',
-                                                    url: urlManagement.getUrlByKey('auth_account') + '/check-login'
-                                                })
-                                                        .then(function (response) {
-                                                            if (response.status === 200 && response.data.length != 0) {
-                                                                $state.go('app.dashboard');
-                                                            }
-                                                            return response;
-                                                        }, function (reject) {
-                                                            return reject;
-                                                        });
+                                            checkLogin: function (IzSentinel, $state) {
+                                                if (IzSentinel.isLogged()) {
+                                                    $state.go('app.dashboard');
+                                                } else
+                                                    return true;
                                             },
-                                            deps: load('scripts/controllers/account/auth.js').deps
+                                            deps: load('modules/themes/admin.default/assets/scripts/controllers/account/auth.js').deps
                                         },
                                         controller: 'accountAuth'
                                     })

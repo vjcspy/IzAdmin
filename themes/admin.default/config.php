@@ -66,13 +66,13 @@ return [
                     'scripts' => ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
                     'styles'  => ['bower_components/angular-loading-bar/build/loading-bar.min.css']
                 ],
-            'dependency' => ['angular']
+            'dependency' => ['angular','angular-animate']
         ],
         'angular-toastr'      => [
             'sources'    =>
                 [
-                    'scripts' => ['bower_components/angular-toastr/dist/angular-toastr.min.js'],
-                    'styles'  => ['bower_components/angular-toastr/dist/angular-toastr.min.css']
+                    'scripts' => ['bower_components/angular-toastr/dist/angular-toastr.tpls.js'],
+                    'styles'  => ['bower_components/angular-toastr/dist/angular-toastr.css']
                 ],
             'dependency' => ['angular']
         ],
