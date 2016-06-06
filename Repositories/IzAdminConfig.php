@@ -1,7 +1,7 @@
 <?php
 namespace Modules\IzAdmin\Repositories;
 
-use Modules\IzAdmin\Repositories\IzAdminConfigProvider\AdminConfigInterface;
+use Modules\IzAdmin\Repositories\IzAdminConfig\AdminConfigInterface;
 
 /**
  * Class IzAdminConfigProvider
@@ -9,7 +9,7 @@ use Modules\IzAdmin\Repositories\IzAdminConfigProvider\AdminConfigInterface;
  *
  * @package Modules\IzAdmin\Respositories
  */
-class IzAdminConfigProvider {
+class IzAdminConfig {
 
     /**
      * @var array

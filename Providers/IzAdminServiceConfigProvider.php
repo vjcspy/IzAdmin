@@ -14,9 +14,10 @@ use Illuminate\Support\ServiceProvider;
 class IzAdminServiceConfigProvider extends ServiceProvider {
 
     public function boot() {
-        /** @var \Modules\IzAdmin\Repositories\IzAdminConfigProvider $izAdminConfig */
+        /** @var \Modules\IzAdmin\Repositories\IzAdminConfig $izAdminConfig */
         $izAdminConfig = $this->app['izAdminConfig'];
-        $izAdminConfig->addConfigProvider('\Modules\IzAdmin\Repositories\IzAdminConfigProvider\AdminConfig', 'global', 10);
+
+        $izAdminConfig->addConfigProvider('\Modules\IzAdmin\Repositories\IzAdminConfig\AdminConfig', 'global', 10);
     }
 
     /**
@@ -29,7 +30,7 @@ class IzAdminServiceConfigProvider extends ServiceProvider {
         $this->app->singleton(
             'izAdminConfig',
             function ($app) {
-                return $app->make('Modules\IzAdmin\Repositories\IzAdminConfigProvider');
+                return $app->make('Modules\IzAdmin\Repositories\IzAdminConfig');
             });
     }
 }

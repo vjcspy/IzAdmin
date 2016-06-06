@@ -1,5 +1,5 @@
 <?php
-namespace Modules\IzAdmin\Repositories\IzAdminConfigProvider;
+namespace Modules\IzAdmin\Repositories\IzAdminConfig;
 
 /**
  * Created by PhpStorm.

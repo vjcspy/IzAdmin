@@ -6,7 +6,7 @@
  * Time: 10:50
  */
 
-namespace Modules\IzAdmin\Repositories\IzAdminConfigProvider;
+namespace Modules\IzAdmin\Repositories\IzAdminConfig;
 
 
 class AdminConfig implements AdminConfigInterface {
@@ -15,7 +15,8 @@ class AdminConfig implements AdminConfigInterface {
         // TODO: Implement handle() method.
         return [
             'path' => 'modules/themes',
-            'appFuncName'=>'Admin Function'
+            'appFuncName'=>'Admin Function',
+            'base_url'=>url('/')
         ];
     }
 }
