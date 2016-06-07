@@ -12,7 +12,7 @@ namespace Modules\IzAdmin\Providers;
 use Illuminate\Support\ServiceProvider;
 use Modules\IzCore\Repositories\CoreConfig;
 
-class IzAdminConfigServiceProvider extends ServiceProvider {
+class OverConfigServiceProvider extends ServiceProvider {
 
     /**
      *Declare Config in IzAdmin
