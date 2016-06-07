@@ -1,4 +1,4 @@
-<?php namespace Modules\Izadmin\Http\Controllers;
+<?php namespace Modules\IzAdmin\Http\Controllers;
 
 use Modules\IzCore\Http\Controllers\ThemeAbstractController;
 

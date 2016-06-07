@@ -1,0 +1,1 @@
+{!! Theme::widget('demo')->render() !!}
