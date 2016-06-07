@@ -13,6 +13,9 @@ use Illuminate\Support\ServiceProvider;
 
 class IzAdminServiceConfigProvider extends ServiceProvider {
 
+    /**
+     *Demo add config to IzAdmin
+     */
     public function boot() {
         /** @var \Modules\IzAdmin\Repositories\IzAdminConfig $izAdminConfig */
         $izAdminConfig = $this->app['izAdminConfig'];
