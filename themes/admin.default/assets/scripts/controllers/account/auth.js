@@ -3,6 +3,12 @@
  */
 app.controller('accountAuth', ['$scope', 'IzSentinel', '$http', 'toastr', '$state',
     function ($scope, IzSentinel, $http, toastr, $state) {
+        if ($state.is('access.lockme')) {
+            if (!$scope.user.email) {
+                $state.go('access.signin');
+            }
+            IzSentinel.logout();
+        }
         $scope.signUp = function () {
             var data = {
                 credentials: {
@@ -24,8 +30,8 @@ app.controller('accountAuth', ['$scope', 'IzSentinel', '$http', 'toastr', '$stat
                 }
             };
             IzSentinel.login(data.credentials).then(function () {
-                
-            },function () {
+                $state.go('app.dashboard');
+            }, function () {
                 toastr.error('Please check user/password!')
             });
         }
