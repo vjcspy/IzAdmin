@@ -7,7 +7,7 @@
   "order": 0,
   "providers": [
     "Modules\\IzAdmin\\Providers\\IzAdminServiceProvider",
-    "Modules\\IzAdmin\\Providers\\IzAdminServiceConfigProvider"
+    "Modules\\IzAdmin\\Providers\\IzAdminConfigServiceProvider"
   ],
   "aliases": {},
   "files": [
