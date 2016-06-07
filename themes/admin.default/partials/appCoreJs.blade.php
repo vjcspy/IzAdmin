@@ -1256,10 +1256,11 @@
 {{--App Core Controller--}}
 <script>
     angular.module('app')
-            .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$document', '$location', '$rootScope', '$timeout',
-                '$mdSidenav', '$mdColorPalette', '$anchorScroll', 'IzAdminConfigService',
+            .controller('AppCtrl', [
+                '$scope', '$translate', '$localStorage', '$window', '$document', '$location', '$rootScope', '$timeout',
+                '$mdSidenav', '$mdColorPalette', '$anchorScroll', 'IzAdminConfigService', 'IzSentinel',
                 function ($scope, $translate, $localStorage, $window, $document, $location, $rootScope, $timeout, $mdSidenav, $mdColorPalette,
-                          $anchorScroll, IzAdminConfigService) {
+                          $anchorScroll, IzAdminConfigService, IzSentinel) {
                     // add 'ie' classes to html
                     var isIE = !!navigator.userAgent.match(/MSIE/i) || !!navigator.userAgent.match(/Trident.*rv:11\./);
                     isIE && angular.element($window.document.body).addClass('ie');
@@ -1304,6 +1305,7 @@
                     };
 
                     $scope.IzAdminConfigService = IzAdminConfigService;
+                    $scope.IzSentinel = IzSentinel;
 
                     $scope.setTheme = function (theme) {
                         $scope.app.setting.theme = theme;

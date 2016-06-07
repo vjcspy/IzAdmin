@@ -21,11 +21,13 @@ class OverMenuServiceProvider extends ServiceProvider {
             'izAdminNav',
             [
                 [
-                    'name'     => 'Dashboard',
-                    'url'      => '',
-                    'badge'    => '3',
-                    'priority' => 0,
-                    'children' => [
+                    'name'          => 'Dashboard',
+                    'url'           => '',
+                    'badge'         => '3',
+                    'icon-class'    => 'icon mdi-action-settings i-20',
+                    'priority'      => 0,
+                    'active-router' => 'dashboard',
+                    'children'      => [
                         [
                             'name'     => 'Analysis',
                             'url'      => 'app.analysis',
@@ -34,13 +36,21 @@ class OverMenuServiceProvider extends ServiceProvider {
                     ]
                 ],
                 [
-                    'name'     => 'System',
-                    'url'      => 'system',
-                    'priority' => 5,
-                    'children' => [
+                    'name'          => 'System',
+                    'url'           => 'system',
+                    'badge'         => '0',
+                    'active-router' => 'system',
+                    'priority'      => 5,
+                    'icon-class'    => 'icon mdi-action-settings i-20',
+                    'children'      => [
                         [
                             'name'     => 'Currency',
                             'url'      => 'system.currency',
+                            'priority' => 4
+                        ],
+                        [
+                            'name'     => 'Currency',
+                            'url'      => 'system.facebook',
                             'priority' => 1
                         ],
                         [
@@ -51,6 +61,11 @@ class OverMenuServiceProvider extends ServiceProvider {
                                 [
                                     'name'     => 'Configuration',
                                     'url'      => 'system.shop.config',
+                                    'priority' => 10
+                                ],
+                                [
+                                    'name'     => 'Example',
+                                    'url'      => 'system.shop.example',
                                     'priority' => 1
                                 ]
                             ]

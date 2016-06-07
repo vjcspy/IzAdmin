@@ -16,12 +16,6 @@ class IzAdminNavigationController extends ThemeAbstractController {
     public function getData() {
         $this->setTheme('admin.default')->setLayout('blank');
 
-        /*Set data navigation*/
-        $this->setViewData(
-            [
-                'navData' => []
-            ]);
-
         return $this->renderHtml();
     }
 }
