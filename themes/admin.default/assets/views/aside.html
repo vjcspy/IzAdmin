@@ -25,12 +25,12 @@
                         <img src="images/a0.jpg" class="img-responsive rounded">
                     </div>
                     <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
-                        <span class="block font-bold">{{user.first_name + user.last_name}}</span>
+                        <span class="block font-bold">{{IzSentinel.getUserData().first_name +' '+ IzSentinel.getUserData().last_name}}</span>
             <span class="pull-right auto">
               <i class="fa inline fa-caret-down"></i>
               <i class="fa none fa-caret-up"></i>
             </span>
-                        {{user.email}}
+                        {{IzSentinel.getUserData().email}}
                     </a>
                 </div>
                 <!--Navigation-->

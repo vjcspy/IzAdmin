@@ -24,7 +24,7 @@ app.controller('accountAuth', ['$scope', 'IzSentinel', '$http', 'toastr', '$stat
                 }
             };
             IzSentinel.login(data.credentials).then(function () {
-
+                
             },function () {
                 toastr.error('Please check user/password!')
             });

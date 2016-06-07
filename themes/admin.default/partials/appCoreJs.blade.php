@@ -87,7 +87,7 @@
                             // do something on error
                             if (rejection.hasOwnProperty('status') && rejection.status === 401) {
                                 $injector.get('toastr').error('Please login !', '');
-                                 $injector.get('$state').go('access.signin');
+                                $injector.get('$state').go('access.signin');
                             }
                             /*show error 400*/
                             if (rejection.hasOwnProperty('status') && rejection.status === 400 && rejection.data.mess) {
@@ -860,63 +860,43 @@
                                     .state('access.signup', {
                                         url: '/signup',
                                         data: {user: {name: null, email: null, password: null}},
-                                        templateUrl: 'views/pages/signup.html',
+                                        templateUrl: 'modules/themes/admin.default/assets/views/pages/signup.html',
                                         resolve: {
-                                            checkLogin: function ($http, urlManagement, $state) {
-                                                return $http({
-                                                    method: 'GET',
-                                                    url: urlManagement.getUrlByKey('auth_account') + '/check-login'
-                                                }).then(function (response) {
-                                                    if (response.status === 200 && response.data.length != 0) {
-                                                        $state.go('app.dashboard');
-                                                    }
-                                                    return response;
-                                                }, function (reject) {
-                                                    return reject;
-                                                });
+                                            checkLogin: function (IzSentinel, $state) {
+                                                if (IzSentinel.isLogged()) {
+                                                    $state.go('app.dashboard');
+                                                } else
+                                                    return true;
                                             },
-                                            deps: load('scripts/controllers/account/auth.js').deps
+                                            deps: load('modules/themes/admin.default/assets/scripts/controllers/account/auth.js').deps
                                         },
                                         controller: 'accountAuth'
                                     })
                                     .state('access.forgot-password', {
                                         url: '/forgot-password',
-                                        templateUrl: 'views/pages/forgot-password.html',
+                                        templateUrl: 'modules/themes/admin.default/assets/views/pages/forgot-password.html',
                                         resolve: {
-                                            checkLogin: function ($http, urlManagement, $state) {
-                                                return $http({
-                                                    method: 'GET',
-                                                    url: urlManagement.getUrlByKey('auth_account') + '/check-login'
-                                                }).then(function (response) {
-                                                    if (response.status === 200 && response.data.length != 0) {
-                                                        $state.go('app.dashboard');
-                                                    }
-                                                    return response;
-                                                }, function (reject) {
-                                                    return reject;
-                                                });
+                                            checkLogin: function (IzSentinel, $state) {
+                                                if (IzSentinel.isLogged()) {
+                                                    $state.go('app.dashboard');
+                                                } else
+                                                    return true;
                                             },
-                                            deps: load('scripts/controllers/account/auth.js').deps
+                                            deps: load('modules/themes/admin.default/assets/scripts/controllers/account/auth.js').deps
                                         },
                                         controller: 'accountAuth'
                                     })
                                     .state('access.lockme', {
                                         url: '/lockme',
-                                        templateUrl: 'views/pages/lockme.html',
+                                        templateUrl: 'modules/themes/admin.default/assets/views/pages/lockme.html',
                                         resolve: {
-                                            checkLogin: function ($http, urlManagement, toastr) {
-                                                return $http({
-                                                    method: 'GET',
-                                                    url: urlManagement.getUrlByKey('auth_account') + '/logout'
-                                                }).then(function (response) {
-                                                    if (response.status === 200)
-                                                        toastr.success('Locked!');
-                                                    return response;
-                                                }, function (reject) {
-                                                    return reject;
-                                                });
+                                            checkLogin: function (IzSentinel, $state) {
+                                                if (IzSentinel.isLogged()) {
+                                                    $state.go('app.dashboard');
+                                                } else
+                                                    return true;
                                             },
-                                            deps: load('scripts/controllers/account/auth.js').deps
+                                            deps: load('modules/themes/admin.default/assets/scripts/controllers/account/auth.js').deps
                                         },
                                         controller: 'accountAuth'
                                     })
