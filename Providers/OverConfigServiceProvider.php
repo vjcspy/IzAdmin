@@ -16,6 +16,7 @@ class OverConfigServiceProvider extends ServiceProvider {
 
     /**
      *Declare Config in IzAdmin
+     * return void
      */
     public function boot() {
         /** @var CoreConfig $coreConfig */
