@@ -6,6 +6,7 @@ class IzAdminController extends ThemeAbstractController {
 
     public function getIndex() {
         $this->setTheme('admin.default')->setLayout('default');
+        $this->izXml->getXmlByPath($this->request->path());
         $this->addAssets(
             [
                 'angular-material',
