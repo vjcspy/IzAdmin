@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
+    <app_dependencies>
+        <dependency name="ngAnimate"/>
+        <dependency name="ngAria"/>
+        <dependency name="ngCookies"/>
+        <dependency name="ngMessages"/>
+        <dependency name="ngSanitize"/>
+        <dependency name="ngMaterial"/>
+        <dependency name="ngStorage"/>
+        <dependency name="ui.router"/>
+        <dependency name="ui.bootstrap"/>
+        <dependency name="ui.load"/>
+        <dependency name="ui.jp"/>
+        <dependency name="pascalprecht.translate"/>
+        <dependency name="oc.lazyLoad"/>
+        <dependency name="angular-loading-bar"/>
+        <dependency name="toastr"/>
+    </app_dependencies>
     <bower_components>
         <asset name="angular-material"/>
         <asset name="angular"/>
