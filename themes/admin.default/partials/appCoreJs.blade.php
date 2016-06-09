@@ -149,7 +149,7 @@
                             name: 'ui.crud.editor',
                             module: true,
                             files: [
-                                './scripts/directives/crud/ui-crud-editor.js'
+                                'modules/themes/admin.default/assets/scripts/directives/crud/ui-crud-editor.js'
                             ]
                         }, {
                             name: 'daterangepicker',
