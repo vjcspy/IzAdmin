@@ -14,13 +14,16 @@ use Modules\IzCore\Repositories\IzMenu;
 
 class OverMenuServiceProvider extends ServiceProvider {
 
+    const IZ_MENU = 'izAdminNav';
+
     public function boot() {
         /** @var IzMenu $izMenu */
         $izMenu = $this->app['izMenu'];
         $izMenu->addMenu(
-            'izAdminNav',
+            self::IZ_MENU,
             [
                 [
+                    'name_id'       => 'dashboard',
                     'name'          => 'Dashboard',
                     'url'           => '',
                     'badge'         => '3',
@@ -36,6 +39,7 @@ class OverMenuServiceProvider extends ServiceProvider {
                     ]
                 ],
                 [
+                    'name_id'       => 'system',
                     'name'          => 'System',
                     'url'           => 'system',
                     'badge'         => '0',
