@@ -16,9 +16,10 @@ class AdminConfig implements ConfigInterface {
     public function handle() {
         // TODO: Implement handle() method.
         return [
-            'path'        => 'modules/themes',
-            'appFuncName' => 'Admin Function',
-            'base_url'    => url('/')
+            'path'              => 'modules/themes',
+            'appFuncName'       => 'Admin Function',
+            'base_url'          => url('/'),
+            'admin.default_url' => 'modules/themes/admin.default/'
         ];
     }
 }
