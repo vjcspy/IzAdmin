@@ -19,7 +19,8 @@ class AdminConfig implements ConfigInterface {
             'path'              => 'modules/themes',
             'appFuncName'       => 'Admin Function',
             'base_url'          => url('/'),
-            'admin.default_url' => 'modules/themes/admin.default/'
+            'admin.default_url' => 'modules/themes/admin.default/',
+            'appName'           => 'X-Admin'
         ];
     }
 }

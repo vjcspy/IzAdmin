@@ -1243,7 +1243,7 @@
                     isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
                     // config
                     $scope.app = {
-                        name: 'X-App',
+                        name: IzAdminConfigService.getConfig('appName'),
                         version: '1.0.2',
                         // for chart colors
                         color: {
