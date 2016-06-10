@@ -1,6 +1,6 @@
 {
-	"name": "laravel-pingpong-modules/izadmin",
-	"vendor":"laravel-pingpong-modules",
+	"name": "vjcspy/izadmin",
+	"vendor":"vjcspy",
 	"type": "magento-library",
 	"description": "Admin page for IzModules Laravel",
 	"authors": [
