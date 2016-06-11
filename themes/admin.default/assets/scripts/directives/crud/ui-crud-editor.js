@@ -805,8 +805,9 @@ window.fistInitDateRage = true;
         _s += '</div>';
         _s += '<div class="col-lg-2">';
         _s += ' <div ng-class="{div200px : supportNewRecord}" class="report-filter-action" style="float: right" data-toggle="tooltip" title="Add/Remove Column">';
-        _s += '<a class="btn btn-outline btn-primary" ng-if="supportNewRecord" ng-click="emitEvent()">New <i class="fa fa-pencil-square-o"></i> </a>&nbsp;';
-        _s += '<a class="btn btn-outline btn-default" data-toggle="modal" data-target="#myModal">Customize <i class="fa fa-list"></i></a>';
+        _s += '<a class="btn btn-outline btn-primary" ng-if="supportNewRecord" ng-click="emitEvent()">Tạo Mới <i class="fa fa-pencil-square-o"></i>' +
+            ' </a>&nbsp;';
+        _s += '<a class="btn btn-outline btn-default" data-toggle="modal" data-target="#myModal">Tùy chọn <i class="fa fa-list"></i></a>';
         _s += '</div>';
         _s += '</div>';
         return {
