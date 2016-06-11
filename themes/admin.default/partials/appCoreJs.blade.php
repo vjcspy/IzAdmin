@@ -4,7 +4,7 @@
     var app = angular
             .module('app', [
                 @foreach($appDependencies as $depen)
-                '{{$depen['name']}}',
+                        '{{$depen['name']}}',
                 @endforeach
             ]);
 </script>
@@ -152,6 +152,13 @@
                                 'modules/themes/admin.default/assets/scripts/directives/crud/ui-crud-editor.js'
                             ]
                         }, {
+                            name: 'angular-material-data-table',
+                            module: true,
+                            files: [
+                                'modules/themes/admin.default/assets/bower_components/angular-material-data-table/dist/md-data-table.min.js',
+                                'modules/themes/admin.default/assets/bower_components/angular-material-data-table/dist/md-data-table.min.css'
+                            ]
+                        }, {
                             name: 'daterangepicker',
                             module: true,
                             files: [
@@ -291,8 +298,8 @@
                             name: 'dataTable',
                             module: false,
                             files: [
-                                '../libs/jquery/datatables/media/js/jquery.dataTables.min.js',
-                                '../libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.js',
+                                'modules/themes/admin.default/assets//libs/jquery/datatables/media/js/jquery.dataTables.min.js',
+                                'modules/themes/admin.default/assets//libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.js',
                                 //'../iz/bower_components/editorDataTable/dataTables.buttons.min.js',
                                 //'../iz/bower_components/editorDataTable/dataTables.select.min.js',
                                 //'../iz/bower_components/editorDataTable/dataTables.editor.min.js',
@@ -300,7 +307,7 @@
                                 //'../iz/bower_components/editorDataTable/buttons.dataTables.min.css',
                                 //'../iz/bower_components/editorDataTable/select.dataTables.min.css',
                                 //'../iz/bower_components/editorDataTable/editor.dataTables.min.css',
-                                '../libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css'
+                                'modules/themes/admin.default/assets//libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css'
                             ]
                         },
                         {

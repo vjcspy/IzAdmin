@@ -6,8 +6,8 @@ window.fistInitDateRage = true;
 (function (angular) {
     var izCrudModule = angular.module('ui.crud.editor', ['oc.lazyLoad', 'ui.load'])
         .value('uiCrudEditortable', {});
-    izCrudModule.directive('uiCrudEditor', ['uiCrudEditortable', 'MODULE_CONFIG', 'uiLoad', '$timeout', 'toastr', '$rootScope', 'ngDialog',
-        function uiEditorTableInjectingFunction(uiCrudEditortable, MODULE_CONFIG, uiLoad, $timeout, toastr, $rootScope, ngDialog) {
+    izCrudModule.directive('uiCrudEditor', ['uiCrudEditortable', 'MODULE_CONFIG', 'uiLoad', '$timeout', 'toastr', '$rootScope',
+        function uiEditorTableInjectingFunction(uiCrudEditortable, MODULE_CONFIG, uiLoad, $timeout, toastr, $rootScope) {
             return {
                 restrict: 'A',
                 scope: {
