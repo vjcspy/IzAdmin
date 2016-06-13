@@ -7,7 +7,8 @@
 }
 
 .selected, .selected td {
-    background-color: #265a88 !important;
+    color: #563d7c !important;
+    background-color: darkgray !important;
 }
 
 .dataTables_filter {
