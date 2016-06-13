@@ -37,6 +37,7 @@
         <asset name="angular-translate"/>
         <asset name="ngstorage"/>
         <asset name="animate-css"/>
+        <asset name="lodash"/>
     </bower_components>
     <custom_assets>
         <!--

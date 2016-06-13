@@ -29,7 +29,8 @@
     "angular-cookies": "^1.5.6",
     "ngstorage": "^0.3.10",
     "angular-ui-utils": "^3.0.0",
-    "angular-material-data-table": "^0.10.9"
+    "angular-material-data-table": "^0.10.9",
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"

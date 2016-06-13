@@ -66,7 +66,7 @@ return [
                     'scripts' => ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
                     'styles'  => ['bower_components/angular-loading-bar/build/loading-bar.min.css']
                 ],
-            'dependency' => ['angular','angular-animate']
+            'dependency' => ['angular', 'angular-animate']
         ],
         'angular-toastr'      => [
             'sources'    =>
@@ -111,6 +111,13 @@ return [
                 ],
             'dependency' => ['angular']
         ],
+        'lodash'              => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/lodash/dist/lodash.min.js']
+                ],
+            'dependency' => ['angular']
+        ]
     ],
 
     /*
