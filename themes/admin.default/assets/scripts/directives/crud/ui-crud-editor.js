@@ -108,13 +108,6 @@ window.fistInitDateRage = true;
                             refresh();
                         }
 
-                        // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
-                        scope.$on('$destroy', function () {
-                            // TODO: event $destroy of directive
-                            //console.log('unregister');
-                            listener();
-                        });
-
                         function load(srcs, callback) {
                             return {
                                 deps: ['$ocLazyLoad', '$q',
