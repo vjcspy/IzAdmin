@@ -60,23 +60,17 @@ window.fistInitDateRage = true;
                                     var data = izDataTable.row(this).data();
                                     if (typeof data == 'undefined')
                                         return false;
-                                    // check xem nếu có khai báo dùng editor thì bắn ra form, còn nếu không thì chỉ bắn ra sự kiến click vào row
-                                    if (scope.uiEditorOptions && scope.uiEditorDisable !== 'true') {
-                                        if (typeof data != 'undefined' && data.hasOwnProperty('id'))
-                                            scope.clickRow(data);
+
+                                    // add css
+                                    if ($(this).hasClass('selected')) {
+                                        // $emit event
+                                        scope.$emit('click_unselected_row_' + scope.crudId, data);
+                                        $(this).removeClass('selected');
                                     }
                                     else {
-                                        // add css
-                                        if ($(this).hasClass('selected')) {
-                                            // $emit event
-                                            scope.$emit('click_unselected_row', data);
-                                            $(this).removeClass('selected');
-                                        }
-                                        else {
-                                            // $emit event
-                                            scope.$emit('click_selected_row', data);
-                                            $(this).addClass('selected');
-                                        }
+                                        // $emit event
+                                        scope.$emit('click_selected_row_' + scope.crudId, data);
+                                        $(this).addClass('selected');
                                     }
                                 });
                                 // Bắt sự kiện để remove hết class css selected
@@ -114,51 +108,12 @@ window.fistInitDateRage = true;
                             refresh();
                         }
 
-
-                        /*Editor*/
-                        scope.clickRow = function (data) {
-                            openPopUp(data);
-                        };
-
-                        var listener = $rootScope.$on('add_new_record_izdatatable' + scope.crudId, function (even, data) {
-                            /*co crudId de biet duoc id cua thang ban ra su kien them moi, neu nhieu thang cung dung directive nay ma ko co id thi se bi ban ra nhieu lan*/
-                            //console.log('catch event: ' + 'add_new_record_izdatatable' + scope.crudId);
-                            openPopUp({});
-                        });
-
-                        // check de unregister listener, mot diem hay ho cuar angular la khi goi lai lister thi no tu unregister
+                        // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
                         scope.$on('$destroy', function () {
+                            // TODO: event $destroy of directive
                             //console.log('unregister');
                             listener();
                         });
-
-                        // open popup to: create, update, delete
-                        function openPopUp(data) {
-                            var dialog = ngDialog.open({
-                                template: './scripts/directives/crud/html/dialogEditor.html',
-                                controller: 'CrudEditorDialogCtrl',
-                                //plain: true,
-                                preCloseCallback: function (value) {
-                                    if (value != 'force')
-                                        return ngDialog.openConfirm({
-                                            template: './scripts/directives/crud/html/dialogCloseConfirm.html',
-                                            className: 'ngdialog-theme-default custom-width-confirm'
-                                        });
-
-                                    // NOTE: return the promise from openConfirm
-                                    //return nestedConfirmDialog;
-                                },
-                                closeByDocument: true,
-                                closeByEscape: true,
-                                resolve: {
-                                    deps: load('scripts/controllers/crud/dialog.js').deps,
-                                    dataOptions: function uiEditorOption() {
-                                        return [scope.uiEditorOptions, scope.uiOptions, data, dialog];
-                                    }
-                                }
-                                //className: 'custom-width'
-                            });
-                        }
 
                         function load(srcs, callback) {
                             return {
