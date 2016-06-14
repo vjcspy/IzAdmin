@@ -133,6 +133,14 @@
     angular.module('app')
             .constant('MODULE_CONFIG', [
                         {
+                            name: 'angular-ui-tree',
+                            module: true,
+                            files: [
+                                'modules/themes/admin.default/assets/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
+                                'modules/themes/admin.default/assets/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css'
+                            ]
+                        },
+                        {
                             name: 'flow',
                             module: true,
                             files: [
