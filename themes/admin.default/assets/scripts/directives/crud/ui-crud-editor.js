@@ -72,7 +72,12 @@ window.fistInitDateRage = true;
                                         scope.$emit('click_selected_row_' + scope.crudId, data);
                                         $(this).addClass('selected');
                                     }
-                                });
+                                })
+                                    .on('click', 'td.action', function () {
+                                        var data = izDataTable.cell(this).data();
+                                        scope.$emit('click_edit_action' + scope.crudId, data);
+                                    });
+
                                 // Bắt sự kiện để remove hết class css selected
                                 $rootScope.$on('remove_all_selected_datatable', function (even, data) {
                                     izDataTable.$('tr.selected').removeClass('selected');

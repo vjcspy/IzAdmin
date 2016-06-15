@@ -31,7 +31,8 @@
     "angular-ui-utils": "^3.0.0",
     "angular-material-data-table": "^0.10.9",
     "lodash": "^4.13.1",
-    "angular-ui-tree": "^2.16.0"
+    "angular-ui-tree": "^2.16.0",
+    "ng-flow": "~2"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"

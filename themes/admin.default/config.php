@@ -117,7 +117,14 @@ return [
                     'scripts' => ['bower_components/lodash/dist/lodash.min.js']
                 ],
             'dependency' => ['angular']
-        ]
+        ],
+        'ng-flow'              => [
+            'sources'    =>
+                [
+                    'scripts' => ['bower_components/ng-flow/dist/ng-flow-standalone.min.js']
+                ],
+            'dependency' => ['angular']
+        ],
     ],
 
     /*
