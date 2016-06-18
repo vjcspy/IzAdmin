@@ -14,3 +14,8 @@
 .dataTables_filter {
     display: none !important;
 }
+
+.iz-date-time-picker {
+    margin-left: 5px;
+    margin-right: 5px;
+}

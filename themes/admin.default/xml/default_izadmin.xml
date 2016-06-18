@@ -40,6 +40,8 @@
         <asset name="animate-css"/>
         <asset name="lodash"/>
         <asset name="ng-flow"/>
+        <asset name="moment"/>
+        <asset name="bootstrap-daterangepicker"/>
     </bower_components>
     <custom_assets>
         <!--
@@ -59,6 +61,7 @@
         <asset name="ui.load" source="scripts/services/ui-load.js" dependency="" theme_name="admin.default"/>
         <asset name="ngstore" source="scripts/services/ngstore.js" dependency="" theme_name="admin.default"/>
         <asset name="IzAdminConfigService" source="scripts/services/core/izadmin/IzAdminConfigService.js" dependency="" theme_name="admin.default"/>
+        <asset name="IzDateTimePicker" source="scripts/directives/core/izdatetimepicker.js" dependency="" theme_name="admin.default"/>
     </custom_assets>
     <view_data>
         <instance name="\Modules\IzAdmin\Repositories\Theme\View\IzAdmin\Index"/>
