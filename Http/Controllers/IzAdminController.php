@@ -5,6 +5,7 @@ use Modules\IzCore\Http\Controllers\ThemeAbstractController;
 class IzAdminController extends ThemeAbstractController {
 
     public function getIndex() {
+        /* FIXME: get by configuration*/
         $this->setTheme('admin.default')->setLayout('default');
 
         /*Dependency for view appCoreJs*/
