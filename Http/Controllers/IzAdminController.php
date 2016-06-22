@@ -12,7 +12,7 @@ class IzAdminController extends ThemeAbstractController {
         $this->theme->partialComposer(
             'appCoreJs',
             function ($view) {
-                $xml = $this->izXml->getXmlByPath($this->theme->getLayoutName() . '_' . str_replace("/", "_", $this->request->path()));
+                $xml = $this->izXml->getXmlByPath($this->theme->getLayoutName());
                 $view->with('appDependencies', isset($xml['app_dependencies']) ? $xml['app_dependencies'] : []);
             });
 
