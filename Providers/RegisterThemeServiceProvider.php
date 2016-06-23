@@ -8,6 +8,7 @@
 
 namespace Modules\IzAdmin\Providers;
 
+use Log;
 
 class RegisterThemeServiceProvider extends \Illuminate\Support\ServiceProvider {
 
@@ -15,7 +16,12 @@ class RegisterThemeServiceProvider extends \Illuminate\Support\ServiceProvider {
         /*Register theme*/
         /** @var \Modules\IzCore\Repositories\Theme $izTheme */
         $izTheme = app()['izTheme'];
-        $izTheme->registerTheme('admin.default', true);
+        try {
+            $izTheme->registerTheme('admin.default', true);
+        } catch (\Exception $e) {
+            // truong hop moi tao app chua co table
+            Log::error($e->getMessage());
+        }
     }
 
     /**
