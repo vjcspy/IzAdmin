@@ -8,7 +8,8 @@
   "providers": [
     "Modules\\IzAdmin\\Providers\\IzAdminServiceProvider",
     "Modules\\IzAdmin\\Providers\\OverMenuServiceProvider",
-    "Modules\\IzAdmin\\Providers\\OverConfigServiceProvider"
+    "Modules\\IzAdmin\\Providers\\OverConfigServiceProvider",
+    "Modules\\IzAdmin\\Providers\\RegisterThemeServiceProvider"
   ],
   "aliases": {},
   "files": [
