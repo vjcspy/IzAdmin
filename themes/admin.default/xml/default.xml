@@ -52,6 +52,7 @@
         <asset name="font-css" source="css/font.css" dependency="" theme_name="admin.default"/>
         <asset name="app-css" source="css/app.css" dependency="" theme_name="admin.default"/>
         <asset name="izStyle-css" source="css/izStyle.css" dependency="" theme_name="admin.default"/>
+        <asset name="app-core-style" source="css/app.min.css" dependency="" theme_name="admin.default"/>
         <asset name="lazyload" source="scripts/directives/lazyload.js" dependency="" theme_name="admin.default"/>
         <asset name="ui.jp" source="scripts/directives/ui-jp.js" dependency="" theme_name="admin.default"/>
         <asset name="ui-nav" source="scripts/directives/ui-nav.js" dependency="" theme_name="admin.default"/>
