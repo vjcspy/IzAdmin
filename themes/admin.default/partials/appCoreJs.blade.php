@@ -180,8 +180,8 @@
                             name: 'textAngular',
                             module: true,
                             files: [
-                                '../libs/angular/textAngular/dist/textAngular-sanitize.min.js',
-                                '../libs/angular/textAngular/dist/textAngular.min.js'
+                                'modules/themes/admin.default/assets/libs/angular/textAngular/dist/textAngular-sanitize.min.js',
+                                'modules/themes/admin.default/assets/libs/angular/textAngular/dist/textAngular.min.js'
                             ]
                         },
                         {

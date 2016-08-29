@@ -8,7 +8,7 @@ class IzAdminController extends ThemeAbstractController {
         /* FIXME: get by configuration*/
         $this->setTheme('admin.default')->setLayout('default');
 
-        /*Dependency for view appCoreJs*/
+        /*Add Dependency for view appCoreJs*/
         $this->theme->partialComposer(
             'appCoreJs',
             function ($view) {

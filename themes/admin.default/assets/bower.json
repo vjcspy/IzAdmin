@@ -33,7 +33,8 @@
     "lodash": "^4.13.1",
     "angular-ui-tree": "^2.16.0",
     "ng-flow": "~2",
-    "bootstrap-daterangepicker": "^2.1.22"
+    "bootstrap-daterangepicker": "^2.1.22",
+    "textAngular": "^1.5.7"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"
