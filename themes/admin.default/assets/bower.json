@@ -37,6 +37,7 @@
     "textAngular": "^1.5.7"
   },
   "devDependencies": {
-    "angular-translate": "^2.11.0"
+    "angular-translate": "^2.11.0",
+    "angular-ui-tinymce": "^0.0.16"
   }
 }

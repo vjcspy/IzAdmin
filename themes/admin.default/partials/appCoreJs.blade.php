@@ -141,6 +141,14 @@
                             ]
                         },
                         {
+                            name: 'tinymce',
+                            module: true,
+                            files: [
+                                'modules/themes/admin.default/assets/bower_components/tinymce-dist/tinymce.min.js',
+                                'modules/themes/admin.default/assets/bower_components/angular-ui-tinymce/src/tinymce.js'
+                            ]
+                        },
+                        {
                             name: 'flow',
                             module: true,
                             files: [
