@@ -204,8 +204,8 @@
                             name: 'angularBootstrapNavTree',
                             module: true,
                             files: [
-                                '../libs/angular/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
-                                '../libs/angular/angular-bootstrap-nav-tree/dist/abn_tree.css'
+                                'modules/themes/admin.default/assets/libs/angular/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
+                                'modules/themes/admin.default/assets/libs/angular/angular-bootstrap-nav-tree/dist/abn_tree.css'
                             ]
                         },
                         {
@@ -279,8 +279,8 @@
                             name: 'xeditable',
                             module: true,
                             files: [
-                                '../libs/angular/angular-xeditable/dist/js/xeditable.min.js',
-                                '../libs/angular/angular-xeditable/dist/css/xeditable.css'
+                                'modules/themes/admin.default/assets/libs/angular/angular-xeditable/dist/js/xeditable.min.js',
+                                'modules/themes/admin.default/assets/libs/angular/angular-xeditable/dist/css/xeditable.css'
                             ]
                         },
                         {
