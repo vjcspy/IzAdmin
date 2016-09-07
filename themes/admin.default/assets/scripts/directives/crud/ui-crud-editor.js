@@ -69,6 +69,7 @@ window.fistInitDateRage = true;
                                     }
                                     else {
                                         // $emit event
+                                        console.log('click_selected_row_' + scope.crudId);
                                         scope.$emit('click_selected_row_' + scope.crudId, data);
                                         $(this).addClass('selected');
                                     }
