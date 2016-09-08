@@ -1249,7 +1249,18 @@
                             }
                         }
                     ]
-            );
+            )
+            .config(['flowFactoryProvider', function (flowFactoryProvider) {
+                flowFactoryProvider.defaults = {
+                    target: 'http://' + window.location.hostname + '/izblog/articletable/upload',
+                    permanentErrors: [404, 500, 501],
+                    maxChunkRetries: 0,
+                    chunkRetryInterval: 5000,
+                    simultaneousUploads: 4,
+                    singleFile: true
+                }
+            }
+            ]);
 
 </script>
 
