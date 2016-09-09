@@ -142,6 +142,25 @@ return [
                 ],
             'dependency' => ['jquery', 'moment', 'bootstrap']
         ],
+        'ngTouch'          => [
+            'sources'    =>
+                [
+                    'scripts' => [
+                        'bower_components/angular-touch/angular-touch.min.js',
+                    ]
+                ],
+            'dependency' => ['jquery', 'angular', 'bootstrap']
+        ],
+        'angular-carousel'          => [
+            'sources'    =>
+                [
+                    'scripts' => [
+                        'bower_components/angular-carousel/dist/angular-carousel.min.js',
+                    ],
+                    'styles'  => ['bower_components/angular-carousel/dist/angular-carousel.min.css']
+                ],
+            'dependency' => ['ngTouch']
+        ],
     ],
 
     /*

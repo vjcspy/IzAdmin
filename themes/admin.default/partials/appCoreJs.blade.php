@@ -1144,7 +1144,7 @@
                                                 templateUrl: 'views/content.html'
                                             }
                                         },
-                                        resolve: load(['izFacebook'])
+//                                        resolve: load(['izFacebook'])
                                     })
                                     .state('system.control', {
                                         url: '/control',

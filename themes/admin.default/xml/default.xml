@@ -17,6 +17,8 @@
         <dependency name="angular-loading-bar"/>
         <dependency name="toastr"/>
         <dependency name="flow"/>
+        <dependency name="ngTouch"/>
+        <dependency name="angular-carousel"/>
     </app_dependencies>
     <bower_components>
         <asset name="angular-material"/>
@@ -42,6 +44,8 @@
         <asset name="ng-flow"/>
         <asset name="moment"/>
         <asset name="bootstrap-daterangepicker"/>
+        <asset name="ngTouch"/>
+        <asset name="angular-carousel"/>
     </bower_components>
     <custom_assets>
         <!--

@@ -48,8 +48,8 @@ class OverMenuServiceProvider extends ServiceProvider {
                     'icon-class'    => 'icon mdi-action-settings i-20',
                     'children'      => [
                         [
-                            'name'     => 'Currency',
-                            'url'      => 'system.currency',
+                            'name'     => 'Setting',
+                            'url'      => 'system.setting',
                             'priority' => 4
                         ],
                         [

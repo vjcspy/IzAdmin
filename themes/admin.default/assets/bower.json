@@ -34,7 +34,8 @@
     "angular-ui-tree": "^2.16.0",
     "ng-flow": "~2",
     "bootstrap-daterangepicker": "^2.1.22",
-    "textAngular": "^1.5.7"
+    "textAngular": "^1.5.7",
+    "angular-carousel": "^1.0.1"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0",
